@@ -67,21 +67,92 @@ $(document ).ready(function() {
                 1400: {
                     slidesPerView: 2,
                     spaceBetween: 22,
-                    centeredSlides: false,
+                    centeredSlides: false
                 },
                 600: {
                     slidesPerView: 2,
                     spaceBetween: 20,
-                    centeredSlides: false,
+                    centeredSlides: false
                 },
                 500: {
                     slidesPerView: 1,
-                    spaceBetween: 60,
+                    spaceBetween: 60
                 },
                 300: {
                     slidesPerView: 1,
-                    spaceBetween: 20,
+                    spaceBetween: 20
+                }
+
+            }
+        });
+    }
+
+    if ($('.bestsellers').length){
+        $('.bestsellers .woocommerce').addClass('swiper-container');
+        var newElems = $("<div class='swiper-pagination'></div>");
+        $('.bestsellers .swiper-container').append(newElems);
+        var MainProductSlider = new Swiper('.bestsellers .swiper-container', {
+            slidesPerView: 5,
+            spaceBetween: 7,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            lazy: true,
+            pagination: {
+                el: '.bestsellers .swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                1400: {
+                    slidesPerView: 5,
+                    spaceBetween: 7,
+                    centeredSlides: false
                 },
+                600: {
+                    slidesPerView: 4,
+                    centeredSlides: false
+                },
+                500: {
+                    slidesPerView: 1
+                },
+                300: {
+                    slidesPerView: 1
+                }
+
+            }
+        });
+    }
+    if ($('.new').length){
+        $('.new .woocommerce').addClass('swiper-container');
+        var newElemsnew = $("<div class='swiper-pagination'></div>");
+        $('.new .swiper-container').append(newElemsnew);
+        var MainProductSlidernew = new Swiper('.new .swiper-container', {
+            slidesPerView: 5,
+            spaceBetween: 7,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            lazy: true,
+            pagination: {
+                el: '.new .swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                1400: {
+                    slidesPerView: 5,
+                    spaceBetween: 7,
+                    centeredSlides: false
+                },
+                600: {
+                    slidesPerView: 4,
+                    centeredSlides: false
+                },
+                500: {
+                    slidesPerView: 1
+                },
+                300: {
+                    slidesPerView: 1
+                }
 
             }
         });

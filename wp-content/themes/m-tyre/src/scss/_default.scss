@@ -127,7 +127,7 @@ a.button{
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  transition: .3s;
+  transition: color .3s;
   padding: 14px 30px;
   &:hover{
     background-color: #4BC3E8;
@@ -328,7 +328,7 @@ input[type="number"] {
 .section-title{
   display: flex;
   align-items: center;
-  padding: 11px 26px;
+  padding: 11px 0 11px 26px;
   margin: 0 0 28px 0;
   font-weight: 800;
   font-size: 36px;
@@ -336,6 +336,7 @@ input[type="number"] {
   text-transform: unset;
   position: relative;
   z-index: 2;
+  justify-content: space-between;
   &:before{
     position: absolute;
     bottom: 0;
@@ -398,4 +399,9 @@ input[type="number"] {
 }
 .add-to-cart-button{
 
+}
+.woosticker.custom_sticker_image{
+  width: 64px;
+  height: 30px;
+  background-position: left center;
 }

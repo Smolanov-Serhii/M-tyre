@@ -136,6 +136,28 @@ function m_tyre_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Сайтбар категорий', 'm-tyre' ),
+            'id'            => 'sidebar-category',
+            'description'   => esc_html__( 'Добавте виджет', 'm-tyre' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Подписка', 'm-tyre' ),
+            'id'            => 'sidebar_mailing',
+            'description'   => esc_html__( 'Добавте виджет', 'm-tyre' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
 }
 add_action( 'widgets_init', 'm_tyre_widgets_init' );
 
@@ -316,7 +338,16 @@ function remove_jq_migrate( $scripts ) {
 
 remove_action('woocommerce_after_shop_loop_item_title','woocommerce_template_loop_price',10);
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_price',9);
-add_action('woocommerce_shop_loop_item_title','add_ostatok',11);
+add_action('woocommerce_shop_loop_item_title','add_opisanie',11);
+function add_opisanie(){
+    global $product;
+    $width = $product->get_attribute('shirina');
+    $prof = $product->get_attribute('profil');
+    $radius = $product->get_attribute('radius');
+    $coef = $product->get_attribute('indeks-nagruzki');
+    echo '<div class="options-item">' . $width . '/' . $prof . ' R' . $radius . ' ' . $coef . 'T</div>';
+}
+add_action('woocommerce_shop_loop_item_title','add_ostatok',12);
 function add_ostatok(){
     $ostatoktext = get_field('nadpis_v_nalichie','options');
     $units = get_field('nadpis_sht','options');
@@ -387,3 +418,96 @@ function add_winter(){
     };
     echo '</div>';
 }
+
+
+// add core markup to woocommerce pages
+add_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper',10);
+
+// overwrite existing output content wrapper function
+function woocommerce_output_content_wrapper()
+{
+    echo '<div class="page-product-category block-container">';
+}
+
+add_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper_cont',12);
+
+// overwrite existing output content wrapper function
+function woocommerce_output_content_wrapper_cont()
+{
+    echo '<div class="page-product-category_cont">';
+}
+
+add_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end',10);
+
+function woocommerce_output_content_wrapper_end()
+{
+    echo '</div><!-- Close Main -->';
+}
+
+add_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end_cont',12);
+
+function woocommerce_output_content_wrapper_end_cont()
+{
+    echo '</div><!-- Close Main -->';
+}
+
+add_action('woocommerce_before_checkout_form', 'woocommerce_output_content_wrapper');
+add_action('woocommerce_after_checkout_form', 'woocommerce_output_content_wrapper_end');
+
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+add_action('woocommerce_after_shop_loop', 'woocommerce_get_sidebar', 6);
+
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+add_action('woocommerce_after_main_content', 'woocommerce_get_sidebar', 11);
+
+add_action('woocommerce_before_shop_loop', 'sidebar_container_before_loop', 5);
+function sidebar_container_before_loop(){
+    echo '<div class="sidebar_container_before_loop">';
+    echo '<div class="sidebar_container_before_loop_cont">';
+}
+
+add_action('woocommerce_after_shop_loop', 'sidebar_container_after_loop', 5);
+function sidebar_container_after_loop(){
+    echo '</div>';
+}
+
+add_action('woocommerce_after_shop_loop', 'sidebar_container_after_loop_end', 8);
+function sidebar_container_after_loop_end(){
+    echo '</div>';
+}
+
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+add_action('woocommerce_after_shop_loop', 'add_category_sidebar', 7);
+function add_category_sidebar(){
+    echo get_sidebar('category');
+}
+
+add_action('woocommerce_after_main_content','add_bottom_block_about',20);
+function add_bottom_block_about(){
+    get_template_part('inc/about');
+}
+
+add_action( 'woocommerce_before_shop_loop_item_title', 'bbloomer_new_badge_shop_page', 3 );
+
+function bbloomer_new_badge_shop_page() {
+    global $product;
+    $newness_days = 2;
+    $triger = 0;
+    $NewAtr = get_field('nadpis_na_new', 'options');
+    $HitAtr = get_field('nadpis_na_hit', 'options');
+    $created = strtotime( $product->get_date_created() );
+    if ( ( time() - ( 60 * 60 * 24 * $newness_days ) ) < $created ) {
+        echo '<div class="new-marker">' . $NewAtr . '</div>';
+        $triger = 1;
+    } else if ($product->featured='true' || $triger = 0){
+
+        echo '<div class="hit-marker">' . $HitAtr . '</div>';
+    };
+}
+
+//if( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_add_wishlist_to_loop' ) ){
+//    function yith_wcwl_add_wishlist_to_loop(){
+//        echo do_shortcode( '[yith_wcwl_add_to_wishlist]' );
+//    }
+//    add_action( 'woocommerce_after_shop_loop_item', 'yith_wcwl_add_wishlist_to_loop', 15 );
+//}

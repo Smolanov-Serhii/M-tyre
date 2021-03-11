@@ -168,7 +168,7 @@ get_header();
                 </a>
             </h2>
             <div class="bestsellers__list">
-                <?php echo do_shortcode('[best_selling_products per_page="10"]');?>
+                <?php echo do_shortcode('[products limit="10" visibility="featured" ]');?>
             </div>
         </div>
     </section>
@@ -184,20 +184,12 @@ get_header();
                 </a>
             </h2>
             <div class="new__list">
-                <?php echo do_shortcode('[recent_products per_page="10"]');?>
+                <?php echo do_shortcode('[products limit="10" orderby="id" order="DESC" visibility="visible"]');?>
             </div>
         </div>
     </section>
-    <section class="about">
-        <div class="about__container block-container">
-            <h2 class="about__title section-title">
-                <?php the_field('zagolovok_dlya_bloka_opisanie', 78);?>
-            </h2>
-            <div class="about__content">
-                <?php the_field('opisanie_bloka_pro_kompaniyu', 78);?>
-            </div>
-        </div>
-    </section>
+
+    <?php get_template_part('inc/about'); ?>  <!-- Блок про компанию -->
 
 <?php
 get_footer();

@@ -23,6 +23,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="main-page" class="main-page">
+
 	<header id="header" class="header">
         <div class="header__container block-container-full">
             <div class="header__brending">

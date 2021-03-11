@@ -10,8 +10,8 @@
  */
 
 ?>
-
-	<footer id="colophon" class="site-footer">
+    <?php get_template_part('inc/mailing'); ?>  <!-- Блок про компанию -->
+	<footer id="footer" class="footer">
 
 	</footer>
 </div>

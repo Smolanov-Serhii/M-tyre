@@ -32,7 +32,7 @@ const scriptFiles = [
    // './src/js/aos.js',
    // './src/js/slick.js',
    // './src/js/perfect-scrollbar.js',
-   // './src/js/jquery.selectric.js',
+   './src/js/jquery.selectric.js',
    // './src/js/swiper-bundle.js',
    './src/js/main.js'
 ]

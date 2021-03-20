@@ -101,6 +101,9 @@ do_action( 'woocommerce_after_main_content' );
  * @hooked woocommerce_get_sidebar - 10
  */
 do_action( 'woocommerce_sidebar' );
-
+get_template_part('inc/viewed');
+get_template_part('inc/about');
 get_footer( 'shop' );
+
+
 

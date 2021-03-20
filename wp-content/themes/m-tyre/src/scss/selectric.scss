@@ -1,14 +1,14 @@
-$selectric-main-color:      #E9D117 !default;                                              // Color used in border
+$selectric-main-color:      #BFBFBF !default;                                              // Color used in border
 $selectric-secondary-color: #BBB !default;                                              // Color used in button
-$selectric-text-color:      #BFBFBF !default;                                              // Color used in label
+$selectric-text-color:      #808384 !default;                                              // Color used in label
 $selectric-bg-color:        #FFFFFF !default;                                           // Background color
 $selectric-btn-bg-color:    transparent !default;                                           // Button background color
-$selectric-height:          43px !default;                                              // Outer height
+$selectric-height:          31px !default;                                              // Outer height
 $selectric-spacing:         10px !default;                                              // Label left padding
 $selectric-border-width:    0.5px !default;                                               // Outer border width
-$selectric-border-radius:   4px !default;                                               // Border radius
+$selectric-border-radius:   0px !default;                                               // Border radius
 $selectric-inner-height:    $selectric-height - ($selectric-border-width * 2) !default; // Inner height
-$selectric-font-size:       18px !default;                                              // Font size
+$selectric-font-size:       14px !default;                                              // Font size
 
 .selectric-wrapper {
   position: relative;
@@ -25,7 +25,6 @@ $selectric-font-size:       18px !default;                                      
   background: $selectric-bg-color;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.15), inset 0px 1px 4px rgba(0, 0, 0, 0.15);
 
   .label {
     display: block;
@@ -202,12 +201,12 @@ $selectric-font-size:       18px !default;                                      
     }
 
     &.highlighted {
-      background: rgba(248,221,69,.4);
+      background: #e5e7e8;
       color: #444;
     }
 
     &:hover {
-      background: rgba(248,221,69,.2);
+      background: #e5e7e8;
       color: #444;
     }
   }

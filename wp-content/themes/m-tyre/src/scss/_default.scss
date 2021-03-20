@@ -293,15 +293,17 @@ input[type="number"] {
   }
   .quantity{
     display: flex;
+    border: 1px solid #B0B0B0;
     .quantity-arrow-plus, .quantity-arrow-minus{
       display: flex;
-      width: 24px;
-      height: 30px;
+      width: 30px;
+      height: 50px;
+      font-weight: 300;
       justify-content: center;
       align-items: center;
-      background-color: #EEF3F8;
-      font-size: 30px;
-      color: #A9C0D0;
+      background-color: white;
+      font-size: 24px;
+      color: #808384;
     }
     span{
       margin-left: 36px;
@@ -405,3 +407,4 @@ input[type="number"] {
   height: 30px;
   background-position: left center;
 }
+

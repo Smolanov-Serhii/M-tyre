@@ -1,5 +1,11 @@
 $(document ).ready(function() {
 
+    if ($('select').length){
+        $(function() {
+            $('select').selectric();
+        });
+    }
+
     if ($('.main-slider').length){
         var MainSlider = new Swiper('.main-slider .swiper-container', {
             slidesPerView: 1,
@@ -87,6 +93,11 @@ $(document ).ready(function() {
         });
     }
 
+    if ($('.single-product').length){
+        var newElems = $('.entry-summary button.single_add_to_cart_button[name="add-to-cart"]');
+        $('.entry-summary .quantity__row').append(newElems);
+    }
+
     if ($('.bestsellers').length){
         $('.bestsellers .woocommerce').addClass('swiper-container');
         var newElems = $("<div class='swiper-pagination'></div>");
@@ -122,6 +133,44 @@ $(document ).ready(function() {
             }
         });
     }
+    if ($('.related').length){
+        $('.related .woocommerce').addClass('swiper-container');
+        var newElems = $("<div class='swiper-pagination'></div>");
+        $('.related .swiper-container').append(newElems);
+        var RelatedtSlider = new Swiper('.related .swiper-container', {
+            slidesPerView: 5,
+            spaceBetween: 7,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            lazy: true,
+            pagination: {
+                el: '.related .swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                1400: {
+                    slidesPerView: 5,
+                    spaceBetween: 7,
+                    centeredSlides: false
+                },
+                600: {
+                    slidesPerView: 4,
+                    centeredSlides: false
+                },
+                500: {
+                    slidesPerView: 1
+                },
+                300: {
+                    slidesPerView: 1
+                }
+
+            }
+        });
+    }
+
+
+
     if ($('.new').length){
         $('.new .woocommerce').addClass('swiper-container');
         var newElemsnew = $("<div class='swiper-pagination'></div>");
@@ -155,6 +204,38 @@ $(document ).ready(function() {
                 }
 
             }
+        });
+    }
+
+    if ($('.quantity').length){
+        $( '.quantity' ).each(function( index ) {
+            let col = $(this).find('input');
+            let plus = $(this).find('.quantity-arrow-plus');
+            let minus = $(this).find('.quantity-arrow-minus');
+            let step = $(this).find('input').attr('step');
+            let min = $(this).find('input').attr('min');
+            var total = 0;
+            plus.click(function() {
+                total = (col.val() * 1) + (step * 1);
+                col.val(total);
+                $('button.button').removeAttr("disabled");
+                var check = col.val();
+                if (total > min){
+                    minus.removeClass('disable');
+                }
+            });
+            minus.click(function() {
+                var check = col.val();
+                total = (col.val() * 1) - (step * 1);
+                col.val(total);
+                $('button.button').removeAttr("disabled");
+                if (total <= min){
+                    minus.addClass('disable');
+                } else {
+                    minus.removeClass('disable');
+                }
+
+            });
         });
     }
 

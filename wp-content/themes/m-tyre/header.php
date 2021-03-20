@@ -38,18 +38,18 @@
                     <?php
                     endif;
                 ?>
-                <div class="header__location">
-                    <div class="location-desc">
-                        <?php echo the_field('nadpis_vash_gorod', 'options');?>
-                    </div>
-                    <select class="location__list">
-                        <option>Ташкент</option>
-                        <option>Ташкент</option>
-                        <option>Ташкент</option>
-                        <option>Ташкент</option>
-                        <option>Ташкент</option>
-                    </select>
-                </div>
+<!--                <div class="header__location">-->
+<!--                    <div class="location-desc">-->
+<!--                        --><?php //echo the_field('nadpis_vash_gorod', 'options');?>
+<!--                    </div>-->
+<!--                    <select class="location__list">-->
+<!--                        <option>Ташкент</option>-->
+<!--                        <option>Ташкент</option>-->
+<!--                        <option>Ташкент</option>-->
+<!--                        <option>Ташкент</option>-->
+<!--                        <option>Ташкент</option>-->
+<!--                    </select>-->
+<!--                </div>-->
             </div>
             <div class="header__navigate">
                 <div class="header__pages padding-part">

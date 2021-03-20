@@ -7,6 +7,83 @@
  * @package m-tyre
  */
 
+// Activate WordPress Maintenance Mode
+function wp_maintenance_mode(){
+    $bgimage = '' . get_template_directory_uri() . '/images/technik.jpg';
+    if(!current_user_can('edit_themes','Сайт находится на стадии разработки', $bgimage) || !is_user_logged_in()){
+        wp_die('<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset="UTF8" />
+	<meta name="viewport" content="width=device-width">
+    <title>Сайт находится на стадии разработки</title>
+	    <style type="text/css">
+	    body{
+            background-image: url(' . $bgimage . ');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            max-width: none;
+            box-sizing: border-box;
+	    }
+	    .wp-die-message{
+            text-align: center;
+            margin: auto!important;
+            width: 100%;
+            max-width: 650px;
+            height: 100%;
+            display: flex;
+            align-content: center;
+            flex-direction: column;
+            justify-content: flex-end;
+	    }
+	        #error-page{
+          margin: 0;
+          height: 100vh;
+          width: 100%;
+          box-shadow: none;
+          border: none;
+          padding-bottom: 180px;
+        }
+        h1{
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 119.9%;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        p{
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 119.9%;
+            text-align: center;
+            color: #FFFFFF;
+            margin: 10px 0;
+        }
+        a{
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            text-align: center;
+            color: #FF3A24;
+            text-decoration: none;
+        }
+		</style>
+
+</head>
+<body id="error-page">
+    <h1>Сайт находится на стадии разработки</h1>
+        <p>Вы можете связаться с нами по телефону</p>
+        <a href="tel:+998 71 200–6-200">+998 71 200–6-200</a>
+        <div class="block-container"></div>
+        </div>
+</body>
+</html>');
+    }
+}
+add_action('get_header', 'wp_maintenance_mode');
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
@@ -207,8 +284,8 @@ function mytheme_add_woocommerce_support(){
 }
 add_action('after_setup_theme','mytheme_add_woocommerce_support');
 add_theme_support( 'wc-product-gallery-zoom' );
-add_theme_support( 'wc-product-gallery-lightbox' );
-add_theme_support( 'wc-product-gallery-slider');
+//add_theme_support( 'wc-product-gallery-lightbox' );
+//add_theme_support( 'wc-product-gallery-slider');
 
 if( function_exists('acf_add_options_page') ) {
 
@@ -482,10 +559,12 @@ function add_category_sidebar(){
     echo get_sidebar('category');
 }
 
-add_action('woocommerce_after_main_content','add_bottom_block_about',20);
-function add_bottom_block_about(){
-    get_template_part('inc/about');
-}
+//add_action('woocommerce_after_main_content','add_bottom_block_about',20);
+//function add_bottom_block_about(){
+//
+//    get_template_part('inc/viewed');
+//    get_template_part('inc/about');
+//}
 
 add_action( 'woocommerce_before_shop_loop_item_title', 'bbloomer_new_badge_shop_page', 3 );
 
@@ -505,9 +584,116 @@ function bbloomer_new_badge_shop_page() {
     };
 }
 
-//if( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_add_wishlist_to_loop' ) ){
-//    function yith_wcwl_add_wishlist_to_loop(){
-//        echo do_shortcode( '[yith_wcwl_add_to_wishlist]' );
-//    }
-//    add_action( 'woocommerce_after_shop_loop_item', 'yith_wcwl_add_wishlist_to_loop', 15 );
-//}
+add_action( 'template_redirect', 'truemisha_recently_viewed_product_cookie', 20 );
+
+function truemisha_recently_viewed_product_cookie() {
+
+    // если находимся не на странице товара, ничего не делаем
+    if ( ! is_product() ) {
+        return;
+    }
+
+
+    if ( empty( $_COOKIE[ 'woocommerce_recently_viewed_2' ] ) ) {
+        $viewed_products = array();
+    } else {
+        $viewed_products = (array) explode( '|', $_COOKIE[ 'woocommerce_recently_viewed_2' ] );
+    }
+
+    // добавляем в массив текущий товар
+    if ( ! in_array( get_the_ID(), $viewed_products ) ) {
+        $viewed_products[] = get_the_ID();
+    }
+
+    // нет смысла хранить там бесконечное количество товаров
+    if ( sizeof( $viewed_products ) > 5 ) {
+        array_shift( $viewed_products ); // выкидываем первый элемент
+    }
+
+    // устанавливаем в куки
+    wc_setcookie( 'woocommerce_recently_viewed_2', join( '|', $viewed_products ) );
+
+}
+
+add_shortcode( 'recently_viewed_products', 'truemisha_recently_viewed_products' );
+
+function truemisha_recently_viewed_products() {
+
+    if( empty( $_COOKIE[ 'woocommerce_recently_viewed_2' ] ) ) {
+        $viewed_products = array();
+    } else {
+        $viewed_products = (array) explode( '|', $_COOKIE[ 'woocommerce_recently_viewed_2' ] );
+    }
+
+    if ( empty( $viewed_products ) ) {
+        return;
+    }
+
+    // надо ведь сначала отображать последние просмотренные
+    $viewed_products = array_reverse( array_map( 'absint', $viewed_products ) );
+
+    $title = '<div class="section-title">Ранее вы смотрели</div>';
+
+    $product_ids = join( ",", $viewed_products );
+
+    return $title . do_shortcode( "[products ids='$product_ids']" );
+
+}
+add_filter( 'woocommerce_output_related_products_args', 'jk_related_products_args' );
+function jk_related_products_args( $args ) {
+    $args['posts_per_page'] = 10; // количество "Похожих товаров"
+    $args['columns'] = 5; // количество колонок
+    return $args;
+}
+
+// Новый таб
+add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
+function woo_new_product_tab( $tabs ) {
+
+    // Adds the new tab
+
+    $tabs['Доставка'] = array(
+        'title'     => __( 'Доставка', 'woocommerce' ),
+        'priority'     => 10,
+        'callback'     => 'woo_new_product_tab_content'
+    );
+
+    $tabs['Условия оплаты'] = array(
+        'title'     => __( 'Условия оплаты', 'woocommerce' ),
+        'priority'     => 50,
+        'callback'     => 'woo_new_product_tab_content2'
+    );
+    $tabs['Гарантия'] = array(
+        'title'     => __( 'Гарантия', 'woocommerce' ),
+        'priority'     => 60,
+        'callback'     => 'woo_new_product_tab_content2'
+    );
+
+    return $tabs;
+}
+function woo_new_product_tab_content() {
+    echo '<h2>Доставка</h2>';
+    echo '<p>описание</p>';
+}
+function woo_new_product_tab_content2() {
+    echo '<h2>Условия оплаты</h2>';
+    echo '<p>описание 2</p>';
+}
+function woo_new_product_tab_content3() {
+    echo '<h2>Гарантия</h2>';
+    echo '<p>описание 2</p>';
+}
+
+add_filter( 'woocommerce_product_tabs', 'devise_woo_rename_reviews_tab', 98);
+function devise_woo_rename_reviews_tab($tabs) {
+
+    $tabs['additional_information']['title'] = 'Описание товара';
+
+    return $tabs;
+}
+// Add to cart
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'tb_woo_custom_cart_button_text' );
+add_filter( 'woocommerce_product_add_to_cart_text', 'tb_woo_custom_cart_button_text' );
+function tb_woo_custom_cart_button_text() {
+    return __( 'Купить', 'woocommerce' );
+}

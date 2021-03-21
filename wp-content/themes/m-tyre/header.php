@@ -51,8 +51,8 @@
 <!--                    </select>-->
 <!--                </div>-->
             </div>
-            <div class="header__navigate">
-                <div class="header__pages padding-part">
+            <div class="header__navigate padding-part">
+                <div class="header__pages">
                     <div class="header__contacts">
                         <a href="tel:<?php echo the_field('telefon', 'options');?>">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +60,7 @@
                             </svg>
                             <?php echo the_field('telefon', 'options');?>
                         </a>
-                        <div class="js_back_call"><?php echo the_field('nadpis_obratnyj_zvonok', 'options');?></div>
+                        <div class="js-show-call"><?php echo the_field('nadpis_obratnyj_zvonok', 'options');?></div>
                     </div>
                     <nav class="peges-nav">
                         <?php
@@ -72,17 +72,9 @@
                         );
                         ?>
                     </nav>
-                    <nav class="icon-nav">
-                        <?php
-                        wp_nav_menu(
-                            array(
-                                'theme_location' => 'page-icon',
-                                'menu_id'        => 'page-icon',
-                            )
-                        );
-                        ?>
-                    </nav>
                 </div>
+            </div>
+            <div class="header__movemenu">
                 <div class="header__market padding-part">
                     <nav class="market-nav">
                         <?php
@@ -107,11 +99,30 @@
                             </label>
                         </form>
                     </div>
+                    <nav class="icon-nav">
+                        <?php
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'page-icon',
+                                'menu_id'        => 'page-icon',
+                            )
+                        );
+                        ?>
+                    </nav>
+                    <div class="to-wishlist">
+                        <a href="<?php echo get_home_url() . '/wishlist/view' ?>">
+
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.03439 0.62615L5.83739 5.28026L0.921884 6.029C0.0403898 6.16257 -0.312881 7.29798 0.326371 7.94829L3.88263 11.5689L3.04151 16.6835C2.8901 17.608 3.82207 18.3005 4.60262 17.8682L9 15.4532L13.3974 17.8682C14.1779 18.297 15.1099 17.608 14.9585 16.6835L14.1174 11.5689L17.6736 7.94829C18.3129 7.29798 17.9596 6.16257 17.0781 6.029L12.1626 5.28026L9.96561 0.62615C9.57196 -0.203435 8.4314 -0.213981 8.03439 0.62615Z" fill="#001317"/>
+                            </svg>
+                            <?php echo do_shortcode('[yith_wcwl_items_count]');?>
+                        </a>
+                    </div>
                     <div class="header__woo">
                         <?php
                         if (class_exists('WooCommerce')) {
                             global $woocommerce; ?>
-                            <a href="<?php echo $woocommerce->cart->get_cart_url() ?>" class="fix_cart_btn fz_an">
+                            <div href="<?php echo $woocommerce->cart->get_cart_url() ?>" class="fix_cart_btn fz_an js-show-pop-rec">
                         <span class="basket-btn__label">
                             <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M19.822 4.431C19.73 4.29808 19.6072 4.18943 19.464 4.11436C19.3209 4.0393 19.1616 4.00006 19 4H5.333L4.179 1.23C4.02769 0.865226 3.77147 0.553593 3.44282 0.334615C3.11418 0.115638 2.72791 -0.00082104 2.333 4.35724e-06H0V2H2.333L7.077 13.385C7.15299 13.5672 7.28118 13.7228 7.44542 13.8322C7.60967 13.9416 7.80263 14 8 14H16C16.417 14 16.79 13.741 16.937 13.352L19.937 5.352C19.9937 5.20063 20.0129 5.03776 19.9928 4.87735C19.9728 4.71695 19.9142 4.56379 19.822 4.431Z" fill="#001317"/>
@@ -125,7 +136,7 @@
                                 ?>
                                 <span class="fix_cart_total"><?php echo sprintf($woocommerce->cart->cart_contents_total);
                                     echo $currency_symbol; ?></span>
-                            </a>
+                            </div >
                             <?php
                         }
                         ?>

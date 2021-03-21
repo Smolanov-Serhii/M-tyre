@@ -486,13 +486,31 @@ function add_icons(){
 
 add_action('woocommerce_after_shop_loop_item','add_winter',20);
 function add_winter(){
+    global $product;
     echo '<div class="winter-icon">';
-    if (get_field('garantiya', $product_id)){
+    $sezon = $product->get_attribute('sezonnost');
+    if ($sezon == 'Зимняя'){
         echo '<svg class="winter" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M19.8611 11.6434L15.8597 12.7151L14.3173 11.8253V10.1557L15.8421 9.2801L19.861 10.3569C19.9417 10.3785 20.0229 10.3891 20.1034 10.3891C20.5162 10.3891 20.8939 10.1134 21.0055 9.69585C21.1392 9.19679 20.8433 8.68392 20.3443 8.55037L18.1411 7.96004L20.1721 6.79395C20.6198 6.53682 20.7747 5.96525 20.5175 5.51739C20.2595 5.06953 19.6891 4.91438 19.2412 5.17212L17.206 6.34096L17.7962 4.13697C17.9297 3.63806 17.6343 3.12509 17.135 2.99154C16.6391 2.86146 16.1241 3.15406 15.9904 3.65264L14.918 7.65418L13.3837 8.53531L11.9293 7.69436V5.92982L14.8705 2.98859C15.2356 2.62328 15.2356 2.03157 14.8705 1.66621C14.5053 1.30094 13.9137 1.30094 13.5482 1.66621L11.9293 3.28514V0.934914C11.9293 0.418574 11.5105 -0.00012207 10.9941 -0.00012207C10.4778 -0.00012207 10.0591 0.418526 10.0591 0.934914V3.27355L8.45188 1.66621C8.08662 1.30094 7.4949 1.30094 7.12954 1.66621C6.76428 2.03152 6.76428 2.62323 7.12954 2.98859L10.0591 5.91809V7.70115L8.61564 8.53389L7.08134 7.65356L6.00971 3.65268C5.87621 3.15411 5.36367 2.8607 4.86514 2.99159C4.36618 3.12514 4.07006 3.6381 4.20375 4.13701L4.7939 6.34063L2.75874 5.17212C2.31008 4.91433 1.73898 5.06915 1.48223 5.51763C1.22525 5.96558 1.38022 6.53677 1.82803 6.7939L3.85891 7.95999L1.65563 8.55032C1.15662 8.68387 0.8606 9.19675 0.994245 9.6958C1.10609 10.1134 1.48375 10.3891 1.89661 10.3891C1.97701 10.3891 2.05822 10.3785 2.13925 10.3569L6.15865 9.27967L7.68169 10.1541L7.68326 11.8253L6.14041 12.7166L2.13925 11.6434C1.64376 11.5133 1.12808 11.8063 0.994245 12.3047C0.8606 12.8035 1.15662 13.3165 1.65563 13.4494L3.85084 14.0382L1.8257 15.2072C1.37865 15.4656 1.22525 16.037 1.4838 16.4841C1.65701 16.785 1.97122 16.9516 2.29403 16.9516C2.45251 16.9516 2.61337 16.9122 2.76074 16.826L4.79613 15.6514L4.20375 17.8635C4.07006 18.3632 4.36618 18.8746 4.86514 19.0089C4.94592 19.0308 5.02709 19.0412 5.10754 19.0412C5.52021 19.0412 5.89787 18.7651 6.00971 18.3472L7.08666 14.329L8.61839 13.4453L10.0591 14.2766V16.0825L7.12954 19.0121C6.76428 19.3773 6.76428 19.9689 7.12954 20.3344C7.3122 20.517 7.55104 20.6075 7.79069 20.6075C8.02953 20.6075 8.26923 20.517 8.45188 20.3344L10.0591 18.7271V21.0649C10.0591 21.5822 10.4778 22 10.9941 22C11.5105 22 11.9293 21.5821 11.9293 21.0649V18.7154L13.5483 20.3344C13.7309 20.517 13.9697 20.6075 14.2094 20.6075C14.4491 20.6075 14.688 20.517 14.8706 20.3344C15.2357 19.969 15.2357 19.3774 14.8706 19.0121L11.9293 16.0708V14.2838L13.3823 13.4452L14.9136 14.3289L15.9906 18.3471C16.1023 18.765 16.48 19.0411 16.8926 19.0411C16.9727 19.0411 17.0541 19.0307 17.1351 19.0088C17.6344 18.8745 17.9298 18.3631 17.7963 17.8634L17.2032 15.6513L19.2394 16.8259C19.3868 16.912 19.5476 16.9515 19.7061 16.9515C20.0289 16.9515 20.3431 16.7849 20.5163 16.484C20.7748 16.0369 20.6215 15.4656 20.1744 15.2071L18.1493 14.0382L20.3444 13.4494C20.8434 13.3166 21.1393 12.8035 21.0056 12.3048C20.8727 11.8063 20.3592 11.5127 19.8611 11.6434ZM12.4472 11.8253L11 12.6611L9.55381 11.8253L9.55219 10.1526L11 9.31738L12.4472 10.1539V11.8253Z" fill="#2D9CDB"/>
 </svg>
                 ';
-    };
+    }
+    if ($sezon == 'Летняя'){
+        echo '<svg class="summer" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.81441 4.51824L4.51825 3.22208C4.16075 2.86412 3.57958 2.86412 3.22208 3.22208C2.86412 3.58004 2.86412 4.16029 3.22208 4.51824L4.51825 5.81441C4.697 5.99362 4.93166 6.08299 5.16633 6.08299C5.401 6.08299 5.63566 5.99362 5.81441 5.81441C6.17237 5.45645 6.17237 4.8762 5.81441 4.51824Z" fill="#F2C94C"/>
+<path d="M2.75 10.0834H0.916667C0.410667 10.0834 0 10.494 0 11C0 11.506 0.410667 11.9167 0.916667 11.9167H2.75C3.256 11.9167 3.66667 11.506 3.66667 11C3.66667 10.494 3.256 10.0834 2.75 10.0834Z" fill="#F2C94C"/>
+<path d="M5.81441 16.1857C5.45691 15.8277 4.87575 15.8277 4.51825 16.1857L3.22208 17.4819C2.86412 17.8398 2.86412 18.4201 3.22208 18.778C3.40083 18.9572 3.6355 19.0466 3.87016 19.0466C4.10483 19.0466 4.3395 18.9572 4.51825 18.778L5.81441 17.4819C6.17237 17.1239 6.17237 16.5437 5.81441 16.1857Z" fill="#F2C94C"/>
+<path d="M11 18.3334C10.494 18.3334 10.0834 18.744 10.0834 19.25V21.0834C10.0834 21.5894 10.494 22 11 22C11.506 22 11.9167 21.5894 11.9167 21.0834V19.25C11.9167 18.744 11.506 18.3334 11 18.3334Z" fill="#F2C94C"/>
+<path d="M18.778 17.4819L17.4819 16.1857C17.1244 15.8277 16.5432 15.8277 16.1857 16.1857C15.8277 16.5437 15.8277 17.1239 16.1857 17.4819L17.4819 18.778C17.6606 18.9572 17.8953 19.0466 18.13 19.0466C18.3646 19.0466 18.5993 18.9572 18.778 18.778C19.136 18.4201 19.136 17.8398 18.778 17.4819Z" fill="#F2C94C"/>
+<path d="M21.0834 10.0834H19.25C18.744 10.0834 18.3334 10.494 18.3334 11C18.3334 11.506 18.744 11.9167 19.25 11.9167H21.0834C21.5894 11.9167 22 11.506 22 11C22 10.494 21.5894 10.0834 21.0834 10.0834Z" fill="#F2C94C"/>
+<path d="M18.778 3.22208C18.4205 2.86412 17.8394 2.86412 17.4819 3.22208L16.1857 4.51824C15.8277 4.8762 15.8277 5.45645 16.1857 5.81441C16.3645 5.99362 16.5991 6.08299 16.8338 6.08299C17.0685 6.08299 17.3031 5.99362 17.4819 5.81441L18.778 4.51824C19.136 4.16029 19.136 3.58004 18.778 3.22208Z" fill="#F2C94C"/>
+<path d="M11 0C10.494 0 10.0834 0.410667 10.0834 0.916667V2.75C10.0834 3.256 10.494 3.66667 11 3.66667C11.506 3.66667 11.9167 3.256 11.9167 2.75V0.916667C11.9167 0.410667 11.506 0 11 0Z" fill="#F2C94C"/>
+<path d="M11 5.04163C7.71463 5.04163 5.04163 7.71463 5.04163 11C5.04163 14.2853 7.71463 16.9583 11 16.9583C14.2853 16.9583 16.9583 14.2853 16.9583 11C16.9583 7.71463 14.2853 5.04163 11 5.04163Z" fill="#F2C94C"/>
+</svg>
+
+
+                ';
+    }
     echo '</div>';
 }
 
@@ -646,40 +664,35 @@ function jk_related_products_args( $args ) {
     return $args;
 }
 
-// Новый таб
+
 add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
 function woo_new_product_tab( $tabs ) {
-
-    // Adds the new tab
-
     $tabs['Доставка'] = array(
         'title'     => __( 'Доставка', 'woocommerce' ),
-        'priority'     => 10,
-        'callback'     => 'woo_new_product_tab_content'
+        'priority'     => 21,
+        'callback'     => 'woo_new_product_tab_dostavka'
     );
 
-    $tabs['Условия оплаты'] = array(
+    $tabs['Оплата'] = array(
         'title'     => __( 'Условия оплаты', 'woocommerce' ),
-        'priority'     => 50,
-        'callback'     => 'woo_new_product_tab_content2'
+        'priority'     => 22,
+        'callback'     => 'woo_new_product_tab_pay'
     );
     $tabs['Гарантия'] = array(
         'title'     => __( 'Гарантия', 'woocommerce' ),
-        'priority'     => 60,
-        'callback'     => 'woo_new_product_tab_content2'
+        'priority'     => 23,
+        'callback'     => 'woo_new_product_tab_varanty'
     );
 
     return $tabs;
 }
-function woo_new_product_tab_content() {
-    echo '<h2>Доставка</h2>';
-    echo '<p>описание</p>';
+function woo_new_product_tab_dostavka() {
+    get_template_part('inc/dostavka');
 }
-function woo_new_product_tab_content2() {
-    echo '<h2>Условия оплаты</h2>';
-    echo '<p>описание 2</p>';
+function woo_new_product_tab_pay() {
+    get_template_part('inc/oplata');
 }
-function woo_new_product_tab_content3() {
+function woo_new_product_tab_varanty() {
     echo '<h2>Гарантия</h2>';
     echo '<p>описание 2</p>';
 }
@@ -695,5 +708,268 @@ function devise_woo_rename_reviews_tab($tabs) {
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'tb_woo_custom_cart_button_text' );
 add_filter( 'woocommerce_product_add_to_cart_text', 'tb_woo_custom_cart_button_text' );
 function tb_woo_custom_cart_button_text() {
-    return __( 'Купить', 'woocommerce' );
+    return __( 'Добавить в корзину', 'woocommerce' );
+}
+
+/*
+ * "Хлебные крошки" для WordPress
+ * автор: Dimox
+ * версия: 2019.03.03
+ * лицензия: MIT
+*/
+function dimox_breadcrumbs() {
+
+    /* === ОПЦИИ === */
+    $text['home']     = 'Главная'; // текст ссылки "Главная"
+    $text['category'] = '%s'; // текст для страницы рубрики
+    $text['search']   = 'Результаты поиска по запросу "%s"'; // текст для страницы с результатами поиска
+    $text['tag']      = 'Записи с тегом "%s"'; // текст для страницы тега
+    $text['author']   = 'Статьи автора %s'; // текст для страницы автора
+    $text['404']      = 'Ошибка 404'; // текст для страницы 404
+    $text['page']     = 'Страница %s'; // текст 'Страница N'
+    $text['cpage']    = 'Страница комментариев %s'; // текст 'Страница комментариев N'
+
+    $wrap_before    = '<div class="breadcrumbs block-container">'; // открывающий тег обертки
+    $wrap_after     = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
+    $sep            = '<span class="breadcrumbs__separator"> | </span>'; // разделитель между "крошками"
+    $before         = '<span class="breadcrumbs__current">'; // тег перед текущей "крошкой"
+    $after          = '</span>'; // тег после текущей "крошки"
+
+    $show_on_home   = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
+    $show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
+    $show_current   = 1; // 1 - показывать название текущей страницы, 0 - не показывать
+    $show_last_sep  = 1; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
+    /* === КОНЕЦ ОПЦИЙ === */
+
+    global $post;
+    $home_url       = home_url('/');
+    $link           = '<span>';
+    $link          .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
+    $link          .= '<meta itemprop="position" content="%3$s" />';
+    $link          .= '</span>';
+    $parent_id      = ( $post ) ? $post->post_parent : '';
+    $home_link      = sprintf( $link, $home_url, $text['home'], 1 );
+
+    if ( is_home() || is_front_page() ) {
+
+        if ( $show_on_home ) echo $wrap_before . $home_link . $wrap_after;
+
+    } else {
+
+        $position = 0;
+
+        echo $wrap_before;
+
+        if ( $show_home_link ) {
+            $position += 1;
+            echo $home_link;
+        }
+
+        if ( is_category() ) {
+            $parents = get_ancestors( get_query_var('cat'), 'category' );
+            foreach ( array_reverse( $parents ) as $cat ) {
+                $position += 1;
+                if ( $position > 1 ) echo $sep;
+                echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+            }
+            if ( get_query_var( 'paged' ) ) {
+                $position += 1;
+                $cat = get_query_var('cat');
+                echo $sep . sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+            } else {
+                if ( $show_current ) {
+                    if ( $position >= 1 ) echo $sep;
+                    echo $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
+                } elseif ( $show_last_sep ) echo $sep;
+            }
+
+        } elseif ( is_search() ) {
+            if ( get_query_var( 'paged' ) ) {
+                $position += 1;
+                if ( $show_home_link ) echo $sep;
+                echo sprintf( $link, $home_url . '?s=' . get_search_query(), sprintf( $text['search'], get_search_query() ), $position );
+                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+            } else {
+                if ( $show_current ) {
+                    if ( $position >= 1 ) echo $sep;
+                    echo $before . sprintf( $text['search'], get_search_query() ) . $after;
+                } elseif ( $show_last_sep ) echo $sep;
+            }
+
+        } elseif ( is_year() ) {
+            if ( $show_home_link && $show_current ) echo $sep;
+            if ( $show_current ) echo $before . get_the_time('Y') . $after;
+            elseif ( $show_home_link && $show_last_sep ) echo $sep;
+
+        } elseif ( is_month() ) {
+            if ( $show_home_link ) echo $sep;
+            $position += 1;
+            echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position );
+            if ( $show_current ) echo $sep . $before . get_the_time('F') . $after;
+            elseif ( $show_last_sep ) echo $sep;
+
+        } elseif ( is_day() ) {
+            if ( $show_home_link ) echo $sep;
+            $position += 1;
+            echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position ) . $sep;
+            $position += 1;
+            echo sprintf( $link, get_month_link( get_the_time('Y'), get_the_time('m') ), get_the_time('F'), $position );
+            if ( $show_current ) echo $sep . $before . get_the_time('d') . $after;
+            elseif ( $show_last_sep ) echo $sep;
+
+        } elseif ( is_single() && ! is_attachment() ) {
+            if ( get_post_type() != 'post' ) {
+                $position += 1;
+                $post_type = get_post_type_object( get_post_type() );
+                if ( $position > 1 ) echo $sep;
+                echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->labels->name, $position );
+                if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+                elseif ( $show_last_sep ) echo $sep;
+            } else {
+                $cat = get_the_category(); $catID = $cat[0]->cat_ID;
+                $parents = get_ancestors( $catID, 'category' );
+                $parents = array_reverse( $parents );
+                $parents[] = $catID;
+                foreach ( $parents as $cat ) {
+                    $position += 1;
+                    if ( $position > 1 ) echo $sep;
+                    echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+                }
+                if ( get_query_var( 'cpage' ) ) {
+                    $position += 1;
+                    echo $sep . sprintf( $link, get_permalink(), get_the_title(), $position );
+                    echo $sep . $before . sprintf( $text['cpage'], get_query_var( 'cpage' ) ) . $after;
+                } else {
+                    if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+                    elseif ( $show_last_sep ) echo $sep;
+                }
+            }
+
+        } elseif ( is_post_type_archive() ) {
+            $post_type = get_post_type_object( get_post_type() );
+            if ( get_query_var( 'paged' ) ) {
+                $position += 1;
+                if ( $position > 1 ) echo $sep;
+                echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->label, $position );
+                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+            } else {
+                if ( $show_home_link && $show_current ) echo $sep;
+                if ( $show_current ) echo $before . $post_type->label . $after;
+                elseif ( $show_home_link && $show_last_sep ) echo $sep;
+            }
+
+        } elseif ( is_attachment() ) {
+            $parent = get_post( $parent_id );
+            $cat = get_the_category( $parent->ID ); $catID = $cat[0]->cat_ID;
+            $parents = get_ancestors( $catID, 'category' );
+            $parents = array_reverse( $parents );
+            $parents[] = $catID;
+            foreach ( $parents as $cat ) {
+                $position += 1;
+                if ( $position > 1 ) echo $sep;
+                echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+            }
+            $position += 1;
+            echo $sep . sprintf( $link, get_permalink( $parent ), $parent->post_title, $position );
+            if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+            elseif ( $show_last_sep ) echo $sep;
+
+        } elseif ( is_page() && ! $parent_id ) {
+            if ( $show_home_link && $show_current ) echo $sep;
+            if ( $show_current ) echo $before . get_the_title() . $after;
+            elseif ( $show_home_link && $show_last_sep ) echo $sep;
+
+        } elseif ( is_page() && $parent_id ) {
+            $parents = get_post_ancestors( get_the_ID() );
+            foreach ( array_reverse( $parents ) as $pageID ) {
+                $position += 1;
+                if ( $position > 1 ) echo $sep;
+                echo sprintf( $link, get_page_link( $pageID ), get_the_title( $pageID ), $position );
+            }
+            if ( $show_current ) echo $sep . $before . get_the_title() . $after;
+            elseif ( $show_last_sep ) echo $sep;
+
+        } elseif ( is_tag() ) {
+            if ( get_query_var( 'paged' ) ) {
+                $position += 1;
+                $tagID = get_query_var( 'tag_id' );
+                echo $sep . sprintf( $link, get_tag_link( $tagID ), single_tag_title( '', false ), $position );
+                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+            } else {
+                if ( $show_home_link && $show_current ) echo $sep;
+                if ( $show_current ) echo $before . sprintf( $text['tag'], single_tag_title( '', false ) ) . $after;
+                elseif ( $show_home_link && $show_last_sep ) echo $sep;
+            }
+
+        } elseif ( is_author() ) {
+            $author = get_userdata( get_query_var( 'author' ) );
+            if ( get_query_var( 'paged' ) ) {
+                $position += 1;
+                echo $sep . sprintf( $link, get_author_posts_url( $author->ID ), sprintf( $text['author'], $author->display_name ), $position );
+                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+            } else {
+                if ( $show_home_link && $show_current ) echo $sep;
+                if ( $show_current ) echo $before . sprintf( $text['author'], $author->display_name ) . $after;
+                elseif ( $show_home_link && $show_last_sep ) echo $sep;
+            }
+
+        } elseif ( is_404() ) {
+            if ( $show_home_link && $show_current ) echo $sep;
+            if ( $show_current ) echo $before . $text['404'] . $after;
+            elseif ( $show_last_sep ) echo $sep;
+
+        } elseif ( has_post_format() && ! is_singular() ) {
+            if ( $show_home_link && $show_current ) echo $sep;
+            echo get_post_format_string( get_post_format() );
+        }
+
+        echo $wrap_after;
+
+    }
+} // end of dimox_breadcrumbs()
+
+if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) ) {
+    function yith_wcwl_get_items_count() {
+        ob_start();
+        ?>
+        <span class="yith-wcwl-items-count">
+      <i class="yith-wcwl-icon fa fa-star-o">
+    <?php echo esc_html( yith_wcwl_count_all_products() ); ?>
+      </i>
+  </span>
+        <?php
+        return ob_get_clean();
+    }
+    add_shortcode( 'yith_wcwl_items_count', 'yith_wcwl_get_items_count' );
+}
+
+if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_ajax_update_count' ) ) {
+    function yith_wcwl_ajax_update_count() {
+        wp_send_json( array(
+            'count' => yith_wcwl_count_all_products()
+        ) );
+    }
+    add_action( 'wp_ajax_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
+    add_action( 'wp_ajax_nopriv_yith_wcwl_update_wishlist_count', 'yith_wcwl_ajax_update_count' );
+}
+
+if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_enqueue_custom_script' ) ) {
+    function yith_wcwl_enqueue_custom_script() {
+        wp_add_inline_script(
+            'jquery-yith-wcwl',
+            "
+        jQuery( function( $ ) {
+          $( document ).on( 'added_to_wishlist removed_from_wishlist', function() {
+            $.get( yith_wcwl_l10n.ajax_url, {
+              action: 'yith_wcwl_update_wishlist_count'
+            }, function( data ) {
+              $('.yith-wcwl-items-count').html( data.count );
+            } );
+          } );
+        } );
+      "
+        );
+    }
+    add_action( 'wp_enqueue_scripts', 'yith_wcwl_enqueue_custom_script', 20 );
 }

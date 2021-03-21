@@ -6,6 +6,19 @@ $(document ).ready(function() {
         });
     }
 
+    if ($('.js-show-pop-rec').length){
+        $( ".js-show-pop-rec").click(function(e) {
+            $('#yith-wacp-mini-cart').trigger('click');
+        });
+    }
+
+    if ($('.js-show-chat').length){
+        $( ".js-show-chat").click(function() {
+            $('.sb-main').toggleClass('sb-active');
+            $('.sb-main').fadeToggle(200);
+        });
+    }
+
     if ($('.main-slider').length){
         var MainSlider = new Swiper('.main-slider .swiper-container', {
             slidesPerView: 1,

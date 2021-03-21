@@ -9,3 +9,31 @@ $green: #41B718;
 $yellow: #F0DD45;
 $black: 000000;
 $hoverbutton: #41B718;
+
+@mixin elselist {
+  ul, ol{
+    font-size: 18px;
+    line-height: 122%;
+    color: #000000;
+    font-weight: 300;
+    margin-bottom: 24px;
+    li{
+      margin-bottom: 16px;
+      position: relative;
+      padding-left: 20px;
+      &:before{
+        position: absolute;
+        top: 6px;
+        left: 0;
+        content: "";
+        display: block;
+        width: 7px;
+        height: 8px;
+        background-image: url("../../images/list-marker.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+}

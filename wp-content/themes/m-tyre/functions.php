@@ -215,6 +215,50 @@ function m_tyre_widgets_init() {
 	);
     register_sidebar(
         array(
+            'name'          => esc_html__( 'Фильтр "Шины параметры"', 'm-tyre' ),
+            'id'            => 'shini-param',
+            'description'   => esc_html__( 'Add widgets here.', 'm-tyre' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Фильтр "Шины автомобиль"', 'm-tyre' ),
+            'id'            => 'shini-avto',
+            'description'   => esc_html__( 'Add widgets here.', 'm-tyre' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Фильтр "Диски параметры"', 'm-tyre' ),
+            'id'            => 'diski-param',
+            'description'   => esc_html__( 'Add widgets here.', 'm-tyre' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Фильтр "Диски автомобиль"', 'm-tyre' ),
+            'id'            => 'diski-avto',
+            'description'   => esc_html__( 'Add widgets here.', 'm-tyre' ),
+            'before_widget' => '<section id="%1$s" class="widget %2$s">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h2 class="widget-title">',
+            'after_title'   => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
             'name'          => esc_html__( 'Сайтбар категорий', 'm-tyre' ),
             'id'            => 'sidebar-category',
             'description'   => esc_html__( 'Добавте виджет', 'm-tyre' ),
@@ -973,3 +1017,101 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_enqueue_custom_scri
     }
     add_action( 'wp_enqueue_scripts', 'yith_wcwl_enqueue_custom_script', 20 );
 }
+
+remove_action('load-update-core.php', 'wp_update_plugins');
+add_filter('pre_site_transient_update_plugins', create_function('$a', "return null;") );
+wp_clear_scheduled_hook('wp_update_plugins');
+
+
+//Для формы фильтра на главную страницу
+add_action('pre_get_posts', 'search_by_cat');
+function  search_by_cat() {
+    global $wp_query;
+
+    if (is_search()) {
+
+        $diametr =  intval($_GET['radius']);
+        if($diametr>0){
+            $wp_query->query_vars['tax_query'][] = array( //для атрибутов товаров
+                "taxonomy" => "pa_radius",
+                "field" => "id",
+                "terms" =>  $diametr
+            );
+        }
+
+        $razmer =  intval($_GET['shirina']);
+        if($razmer>0){
+            $wp_query->query_vars['tax_query'][] = array(
+                "taxonomy" => "pa_shirina",
+                "field" => "id",
+                "terms" =>  $razmer
+            );
+        }
+
+        $profil =  intval($_GET['profil']);
+        if($profil>0){
+            $wp_query->query_vars['tax_query'][] = array(
+                "taxonomy" => "pa_profil",
+                "field" => "id",
+                "terms" =>  $razmer
+            );
+        }
+        $indeksnagruzki =  intval($_GET['indeks-nagruzki']);
+        if($indeksnagruzki>0){
+            $wp_query->query_vars['tax_query'][] = array(
+                "taxonomy" => "pa_indeks-nagruzki",
+                "field" => "id",
+                "terms" =>  $razmer
+            );
+        }
+
+        $proizvoditel =  intval($_GET['proizvoditel']);
+        if($proizvoditel>0){
+            $wp_query->query_vars['tax_query'][] = array(
+                "taxonomy" => "pa_proizvoditel",
+                "field" => "id",
+                "terms" =>  $proizvoditel
+            );
+        }
+
+        $sezonnost =  intval($_GET['sezonnost']);
+        if($sezonnost>0){
+            $wp_query->query_vars['tax_query'][] = array(
+                "taxonomy" => "pa_sezonnost",
+                "field" => "id",
+                "terms" =>  $sezonnost
+            );
+        }
+
+        $indeksskorosti =  intval($_GET['indeks-skorosti']);
+        if($indeksskorosti>0){
+            $wp_query->query_vars['tax_query'][] = array(
+                "taxonomy" => "pa_indeks-skorosti",
+                "field" => "id",
+                "terms" =>  $sezonnost
+            );
+        }
+
+        $shipy =  intval($_GET['shipy']);
+        if($shipy>0){
+            $wp_query->query_vars['tax_query'][] = array(
+                "taxonomy" => "pa_shipy",
+                "field" => "id",
+                "terms" =>  $shipy
+            );
+        }
+
+
+
+        $cat =  intval($_GET['cat']);
+
+        if($cat<0){
+            $wp_query->query_vars['product_cat'] =  '';
+        }else{
+            $term = get_term_by('id',$cat,'product_cat');
+            $wp_query->query_vars['cat'] = '';
+            $wp_query->query_vars['product_cat'] =  $term->slug;
+        }
+    }
+}
+//Для формы фильтра на главную страницу - конец

@@ -5,6 +5,8 @@
  */
 
 get_header();
+global $woocommerce;
+global $product;
 ?>
 
     <section class="main-slider">
@@ -59,6 +61,115 @@ get_header();
                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 8.00012C17.5 8.28192 17.3881 8.55217 17.1888 8.75142C16.9895 8.95068 16.7193 9.06262 16.4375 9.06262L4.12738 9.06262L8.68975 13.6229C8.88926 13.8224 9.00134 14.093 9.00134 14.3751C9.00134 14.6573 8.88926 14.9279 8.68975 15.1274C8.49024 15.3269 8.21965 15.439 7.9375 15.439C7.65535 15.439 7.38476 15.3269 7.18525 15.1274L0.81025 8.75237C0.711304 8.65367 0.6328 8.53643 0.579238 8.40734C0.525674 8.27826 0.498101 8.13988 0.498101 8.00012C0.498101 7.86037 0.525674 7.72198 0.579238 7.5929C0.6328 7.46382 0.711304 7.34657 0.81025 7.24787L7.18525 0.872872C7.38476 0.673364 7.65535 0.561281 7.9375 0.561281C8.21965 0.561281 8.49024 0.673364 8.68975 0.872873C8.88926 1.07238 9.00134 1.34297 9.00134 1.62512C9.00134 1.90727 8.88926 2.17786 8.68975 2.37737L4.12738 6.93762L16.4375 6.93762C16.7193 6.93762 16.9895 7.04956 17.1888 7.24882C17.3881 7.44808 17.5 7.71833 17.5 8.00012Z" fill="white"/>
                 </svg>
+            </div>
+        </div>
+        <div class="main-filter">
+            <div class="main-filter__container">
+                <div class="main-filter__tabs">
+                    <div class="main-filter__tabs-header active" data-id="shini">
+                        Шины
+                    </div>
+                    <div class="main-filter__tabs-header" data-id="diski">
+                        Диски
+                    </div>
+                </div>
+                <div class="main-filter__tab-content">
+                    <form role="search" method="get" class="woocommerce-product-search" name="shini"
+                          action="<?php echo esc_url(home_url('/')); ?>">
+                        <div class="main-filter__tab-item po-atributam">
+                            <input style="display: none;" type="search"
+                                   id="woocommerce-product-search-field-<?php echo isset($index) ? absint($index) : 0; ?>"
+                                   class="search-field"
+                                   placeholder="<?php echo esc_attr__('Search products&hellip;', 'woocommerce'); ?>" value=""
+                                   name="s"/>
+                            <div class="row s-fast-search__row justify-content-center">
+                                <div class="col-md-12">
+                                    <?php
+                                    $shirina = wp_dropdown_categories("taxonomy=pa_shirina&echo=0&show_option_none=Все ширины&name=shirina");
+                                    ?>
+                                    <label>Ширина</label>
+                                    <div> <?php echo $shirina; ?></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <?php
+                                    $profil = wp_dropdown_categories("taxonomy=pa_profil&echo=0&show_option_none=Все профиля шин&name=profil");
+                                    ?>
+                                    <label>Профиль</label>
+                                    <div><?php echo $profil; ?></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <?php
+                                    $radius = wp_dropdown_categories("taxonomy=pa_radius&echo=0&show_option_none=Все внутренние радиусы шин&name=radius");
+                                    ?>
+                                    <label>Радиус</label>
+                                    <div><?php echo $radius; ?></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <?php
+                                    $indeksnagruzki = wp_dropdown_categories("taxonomy=pa_indeks-nagruzki&echo=0&show_option_none=Все индексы нагрузки&name=indeks-nagruzki");
+                                    ?>
+                                    <label>Индекс нагрузки</label>
+                                    <div><?php echo $indeksnagruzki; ?></div>
+                                </div>
+                                <!--                    <div class="col-md-12">-->
+                                <!--                        --><?php //$dropdowncats = wp_dropdown_categories(
+                                //                            'hide_empty=0&depth=1&orderby=name&order=ASC&selected='.$_GET['product_cat'].'&hierarchical=1&echo=0&taxonomy=product_cat&show_option_none=Все категории'
+                                //                        ); ?>
+                                <!--                        <label>Категории</label>-->
+                                <!--                        <div>--><?php //echo $dropdowncats; ?><!--</div>-->
+                                <!--                    </div>-->
+                            </div>
+                        </div>
+                        <div class="main-filter__tab-item po-avto">
+                            <input style="display: none;" type="search"
+                                   id="woocommerce-product-search-field-<?php echo isset($index) ? absint($index) : 0; ?>"
+                                   class="search-field"
+                                   placeholder="<?php echo esc_attr__('Search products&hellip;', 'woocommerce'); ?>" value=""
+                                   name="s"/>
+                            <div class="row s-fast-search__row justify-content-center">
+                                <div class="col-md-12">
+                                    <?php
+                                    $proizvoditel = wp_dropdown_categories("taxonomy=pa_proizvoditel&echo=0&show_option_none=Все Производители&name=proizvoditel");
+                                    ?>
+                                    <label>Производитель</label>
+                                    <div> <?php echo $proizvoditel; ?></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <?php
+                                    $sezonnost = wp_dropdown_categories("taxonomy=pa_sezonnost&echo=0&show_option_none=Все сезонности&name=sezonnost");
+                                    ?>
+                                    <label>Сезонность</label>
+                                    <div><?php echo $sezonnost; ?></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <?php
+                                    $indeksskorosti = wp_dropdown_categories("taxonomy=pa_indeks-skorosti&echo=0&show_option_none=Все индексы скорости&name=indeks-skorosti");
+                                    ?>
+                                    <label>Индекс скорости</label>
+                                    <div><?php echo $indeksskorosti; ?></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <?php
+                                    $shipy = wp_dropdown_categories("taxonomy=pa_shipy&echo=0&show_option_none=Все виды шипования&name=shipy");
+                                    ?>
+                                    <label>Шипы</label>
+                                    <div><?php echo $shipy; ?></div>
+                                </div>
+                                <!--                    <div class="col-md-12">-->
+                                <!--                        --><?php //$dropdowncats = wp_dropdown_categories(
+                                //                            'hide_empty=0&depth=1&orderby=name&order=ASC&selected='.$_GET['product_cat'].'&hierarchical=1&echo=0&taxonomy=product_cat&show_option_none=Все категории'
+                                //                        ); ?>
+                                <!--                        <label>Категории</label>-->
+                                <!--                        <div>--><?php //echo $dropdowncats; ?><!--</div>-->
+                                <!--                    </div>-->
+                            </div>
+                            <input type="hidden" name="post_type" value="product"/>
+                        </div>
+                        <button type="submit" class="filtr_search_button"
+                                value="<?php echo esc_attr_x('Search', 'submit button', 'woocommerce'); ?>">Подобрать
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

@@ -12,6 +12,14 @@ $(document ).ready(function() {
         });
     }
 
+    $( ".col-md-12").each(function(index) {
+        $( ".col-md-12 select").change(function() {
+            $(this).closest('.col-md-12').find('label').css('display', 'flex');
+            $(this).closest('.col-md-12').find('.selectric-wrapper').css('border-top', 'none');
+        });
+    });
+
+
     if ($('.js-show-chat').length){
         $( ".js-show-chat").click(function() {
             $('.sb-main').toggleClass('sb-active');
@@ -251,7 +259,6 @@ $(document ).ready(function() {
             });
         });
     }
-
 });
 
 

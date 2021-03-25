@@ -85,28 +85,28 @@ global $product;
                             <div class="row s-fast-search__row justify-content-center">
                                 <div class="col-md-12">
                                     <?php
-                                    $shirina = wp_dropdown_categories("taxonomy=pa_shirina&echo=0&show_option_none=Все ширины&name=shirina");
+                                    $shirina = wp_dropdown_categories("taxonomy=pa_shirina&echo=0&show_option_none=Ширина&name=shirina");
                                     ?>
                                     <label>Ширина</label>
                                     <div> <?php echo $shirina; ?></div>
                                 </div>
                                 <div class="col-md-12">
                                     <?php
-                                    $profil = wp_dropdown_categories("taxonomy=pa_profil&echo=0&show_option_none=Все профиля шин&name=profil");
+                                    $profil = wp_dropdown_categories("taxonomy=pa_profil&echo=0&show_option_none=Профиль&name=profil");
                                     ?>
                                     <label>Профиль</label>
                                     <div><?php echo $profil; ?></div>
                                 </div>
                                 <div class="col-md-12">
                                     <?php
-                                    $radius = wp_dropdown_categories("taxonomy=pa_radius&echo=0&show_option_none=Все внутренние радиусы шин&name=radius");
+                                    $radius = wp_dropdown_categories("taxonomy=pa_radius&echo=0&show_option_none=Радиус&name=radius");
                                     ?>
                                     <label>Радиус</label>
                                     <div><?php echo $radius; ?></div>
                                 </div>
                                 <div class="col-md-12">
                                     <?php
-                                    $indeksnagruzki = wp_dropdown_categories("taxonomy=pa_indeks-nagruzki&echo=0&show_option_none=Все индексы нагрузки&name=indeks-nagruzki");
+                                    $indeksnagruzki = wp_dropdown_categories("taxonomy=pa_indeks-nagruzki&echo=0&show_option_none=Индекс нагрузки&name=indeks-nagruzki");
                                     ?>
                                     <label>Индекс нагрузки</label>
                                     <div><?php echo $indeksnagruzki; ?></div>
@@ -129,28 +129,28 @@ global $product;
                             <div class="row s-fast-search__row justify-content-center">
                                 <div class="col-md-12">
                                     <?php
-                                    $proizvoditel = wp_dropdown_categories("taxonomy=pa_proizvoditel&echo=0&show_option_none=Все Производители&name=proizvoditel");
+                                    $proizvoditel = wp_dropdown_categories("taxonomy=pa_proizvoditel&echo=0&show_option_none=Производитель&name=proizvoditel");
                                     ?>
                                     <label>Производитель</label>
                                     <div> <?php echo $proizvoditel; ?></div>
                                 </div>
                                 <div class="col-md-12">
                                     <?php
-                                    $sezonnost = wp_dropdown_categories("taxonomy=pa_sezonnost&echo=0&show_option_none=Все сезонности&name=sezonnost");
+                                    $sezonnost = wp_dropdown_categories("taxonomy=pa_sezonnost&echo=0&show_option_none=Сезонность&name=sezonnost");
                                     ?>
                                     <label>Сезонность</label>
                                     <div><?php echo $sezonnost; ?></div>
                                 </div>
                                 <div class="col-md-12">
                                     <?php
-                                    $indeksskorosti = wp_dropdown_categories("taxonomy=pa_indeks-skorosti&echo=0&show_option_none=Все индексы скорости&name=indeks-skorosti");
+                                    $indeksskorosti = wp_dropdown_categories("taxonomy=pa_indeks-skorosti&echo=0&show_option_none=Индекс скорости&name=indeks-skorosti");
                                     ?>
                                     <label>Индекс скорости</label>
                                     <div><?php echo $indeksskorosti; ?></div>
                                 </div>
                                 <div class="col-md-12">
                                     <?php
-                                    $shipy = wp_dropdown_categories("taxonomy=pa_shipy&echo=0&show_option_none=Все виды шипования&name=shipy");
+                                    $shipy = wp_dropdown_categories("taxonomy=pa_shipy&echo=0&show_option_none=Шипованность&name=shipy");
                                     ?>
                                     <label>Шипы</label>
                                     <div><?php echo $shipy; ?></div>
@@ -301,6 +301,7 @@ global $product;
     </section>
 
     <?php get_template_part('inc/about'); ?>  <!-- Блок про компанию -->
-
 <?php
 get_footer();
+?>
+

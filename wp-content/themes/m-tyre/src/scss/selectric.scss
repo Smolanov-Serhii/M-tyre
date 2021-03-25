@@ -61,11 +61,11 @@ $selectric-font-size:       14px !default;                                      
       bottom: 0;
       left: 0;
       margin: auto;
-      width: 0;
-      height: 0;
-      border: 4px solid transparent;
-      border-top-color: $selectric-secondary-color;
-      border-bottom: none;
+      border-right: 1px solid #bbb;
+      border-bottom: 1px solid #bbb;
+      width: 6px;
+      height: 6px;
+      transform: rotate(45deg);
     }
   }
 }

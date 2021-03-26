@@ -41,3 +41,6 @@ echo apply_filters(
 	$product,
 	$args
 );
+
+?>
+

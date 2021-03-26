@@ -9,7 +9,7 @@ get_header();
 
 <?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?>
 <section class="pay block-container">
-    <h1 class="pay__title section-title">
+    <h1 class="pay__title section-title page-title-h1">
         <?php the_title();?>
     </h1>
     <div class="pay__content">
@@ -31,7 +31,10 @@ get_header();
                     ?>
                         <div class="pay__item">
                             <div class="pay__item-header">
-                                <img src="<?php echo $itemimage;?>" alt="<?php echo $itemtitle;?>">
+                                <?php if($itemimage){
+                                    echo '<img src="' . $itemimage . '" alt="' . $itemtitle . '">';
+                                } ?>
+
                                 <h2 class="pay__item-title">
                                     <?php echo $itemtitle;?>
                                 </h2>

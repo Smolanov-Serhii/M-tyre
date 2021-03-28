@@ -3,7 +3,21 @@
 //@import "woocommerce";
 @import "swiper-bundle";
 @import "default";
+.swiper-pagination {
+  bottom: 0;
 
+  .swiper-pagination-bullet {
+    background-color: #E5E7E8;
+    width: 10px;
+    height: 10px;
+    margin: 0 6px;
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #001317;
+  }
+}
 .header {
   background-color: #001317;
   padding: 12px 0 14px 0;
@@ -2499,3 +2513,208 @@
     }
   }
 }
+.news{
+  padding-bottom: 57px;
+  &__list{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -25px;
+    margin-top: 64px;
+  }
+  &__item{
+    width: calc(33.3333% - 25px);
+    margin-right: 25px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    &-title{
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 107.4%;
+      color: #001317;
+      margin-top: 21px;
+    }
+    &-content{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 107.4%;
+      color: #001317;
+      margin-top: 9px;
+      flex: 1;
+      p{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 107.4%;
+        color: #001317;
+        margin-top: 9px;
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
+    }
+    &-bottom{
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+    &-date{
+      font-size: 14px;
+      line-height: 107.4%;
+      color: #A6A9AA;
+      font-weight: 400;
+    }
+    &-lnk{
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 122%;
+      text-decoration-line: underline;
+      color: #001317;
+      a{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 122%;
+        text-decoration-line: underline;
+        color: #001317;
+      }
+    }
+  }
+}
+.wp-pagenavi{
+  .pages{
+    display: none;
+  }
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  a, .current{
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500!important;
+    font-size: 18px;
+    line-height: 122%;
+    color: #000000;
+    margin: 0 5px 0 0;
+    border: none;
+    transition: 0.2s;
+    &:hover{
+      background-color: rgba(255,58,36,0.7);
+      color: white;
+    }
+  }
+  .current{
+    color: white;
+    background-color: #FF3A24;
+    &:hover{
+      background-color: rgba(255,58,36,1);
+      color: white;
+    }
+  }
+  .nextpostslink, .previouspostslink{
+    color: transparent;
+    background-color: #E5E7E8;
+    background-position: center;
+    background-size: contain;
+    &:hover{
+
+    }
+  }
+  .nextpostslink{
+    background-image: url("../../images/next-pag.svg");
+    margin-left: 21px;
+  }
+  .previouspostslink{
+    background-image: url("../../images/prev-pag.svg");
+    margin-right: 26px;
+  }
+}
+body.single-post{
+  padding-top: 0;
+}
+.single-post{
+  padding-top: 46px;
+  &__content{
+    @include elselist;
+    h3{
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 122%;
+      color: #000000;
+      margin-bottom: 24px;
+    }
+    p{
+      font-weight: 400;
+      line-height: 122%;
+    }
+    ul{
+      li{
+        display:inline-block;
+      }
+    }
+  }
+  &__image{
+    float: left;
+    margin-right: 54px;
+    margin-bottom: 30px;
+    width: 600px;
+    height: auto;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__title{
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 122%;
+    color: #001317;
+    margin-bottom: 20px;
+    padding-top: 20px;
+  }
+  &__date{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 107.4%;
+    color: #A6A9AA;
+    margin-bottom: 20px;
+  }
+}
+.single-releated{
+  margin-bottom: 74px;
+  margin-top: 62px;
+  &__wrapper{
+    padding-bottom: 52px;
+    display: flex;
+    align-items: stretch;
+  }
+  .news__item{
+    display: flex;
+    flex-direction: column;
+    height: auto!important;
+    .news__permalink{
+      flex: 1;
+    }
+    .news__item-content{
+      flex: 0;
+    }
+  }
+  &__title{
+    display: flex;
+    justify-content: space-between;
+    a{
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 122%;
+      color: #001317;
+      text-decoration: underline;
+      svg{
+        margin-left: 9px;
+      }
+    }
+  }
+}
+

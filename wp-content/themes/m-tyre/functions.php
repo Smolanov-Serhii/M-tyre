@@ -1115,3 +1115,6 @@ function  search_by_cat() {
     }
 }
 //Для формы фильтра на главную страницу - конец
+
+add_image_size( 'new-item', 390, 190 );
+

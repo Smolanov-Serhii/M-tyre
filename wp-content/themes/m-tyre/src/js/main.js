@@ -228,6 +228,39 @@ $(document ).ready(function() {
         });
     }
 
+    if ($('.single-releated__list').length){
+        var NewsLast = new Swiper('.single-releated__list', {
+            slidesPerView: 5,
+            spaceBetween: 7,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            lazy: true,
+            pagination: {
+                el: '.single-releated__list .swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                1400: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                    centeredSlides: false
+                },
+                600: {
+                    slidesPerView: 3,
+                    centeredSlides: false
+                },
+                500: {
+                    slidesPerView: 1
+                },
+                300: {
+                    slidesPerView: 1
+                }
+
+            }
+        });
+    }
+
     if ($('.quantity').length){
         $( '.quantity' ).each(function( index ) {
             let col = $(this).find('input');
@@ -276,6 +309,7 @@ $(document ).ready(function() {
             var CenterSecondCoord = SecondCoord;
         }
         ymaps.ready(function () {
+
             var IconUrl = $('#map').data('icon');
             var myMap = new ymaps.Map('map', {
                     center: [CenterFirstCoord, CenterSecondCoord],
@@ -309,12 +343,12 @@ $(document ).ready(function() {
                     // Своё изображение иконки метки.
                     iconImageHref: IconUrl,
                     // Размеры метки.
-                    iconImageSize: [72, 87],
+                    iconImageSize: [89, 59],
                     // Смещение левого верхнего угла иконки относительно
                     // её "ножки" (точки привязки).
-                    iconImageOffset: [-40, -90],
+                    iconImageOffset: [0, -59],
                     // Смещение слоя с содержимым относительно слоя с картинкой.
-                    iconContentOffset: [15, 15],
+                    iconContentOffset: [0, 30],
                     // Макет содержимого.
                     iconContentLayout: MyIconContentLayout
                 });

@@ -31,7 +31,7 @@ get_header();
         </div>
     </div>
 </section>
-<div class="contacts-map" id="map">
+<div class="contacts-map" id="map" data-icon="<?php echo get_template_directory_uri()?>/images/marker-map.svg">
 
 </div>
 <?php

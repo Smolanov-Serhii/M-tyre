@@ -139,54 +139,72 @@ a{
 .woocommerce table.shop_attributes th{
   width: 20%;
 }
-table{
-  th{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+.woocommerce-message, .woocommerce-info{
+  border-top-color: #FF3A24;
+  font-family: Montserrat,sans-serif;
+  &:before{
+    color: #FF3A24;
   }
-  td{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
+  a{
+    color: #FF3A24;
   }
-  th, td{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 155%;
-    color: #000000;
-    border-top: 1px solid #0E5A9E;
-    padding: 10px;
-    text-align: left;
-    p{
-      padding-left: 20px!important;
+}
+@mixin customtable{
+  table{
+    border: none;
+    thead{
+      background-color: #F5F5F5;
     }
-    @media all and (max-width: 830px) {
+    th{
+      font-weight: 500;
       font-size: 14px;
+      line-height: 122%;
+      color: #B0B0B0!important;
     }
-    @media all and (max-width: 600px) {
-      font-size: 12px;
-      padding: 8px;
+    td{
+      font-weight: 400;
     }
-    @media all and (max-width: 400px) {
-      font-size: 10px;
-      padding: 8px;
-    }
-    &.actions{
+    th, td{
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 155%;
+      color: #000000;
+      padding: 10px;
       text-align: left;
-      .button{
-        padding: 14px 30px;
+      p{
+        padding-left: 20px!important;
+      }
+      @media all and (max-width: 830px) {
+        font-size: 14px;
+      }
+      @media all and (max-width: 600px) {
+        font-size: 12px;
+        padding: 8px;
+      }
+      @media all and (max-width: 400px) {
+        font-size: 10px;
+        padding: 8px;
+      }
+      &.actions{
+        text-align: left;
+        .button{
+          padding: 14px 30px;
+        }
+      }
+    }
+    tr{
+      td, th{
+        padding: 10px;
       }
     }
   }
-  tr{
-    &:nth-child(odd){
-      background-color: rgba(75,195,232,0.3);
-    }
-    td, th{
-      padding: 10px;
-    }
-
-  }
+}
+.woocommerce {
+  @include customtable;
+}
+.woocommerce table.shop_table{
+  border: none;
 }
 
 .button-green, #sendbutton, .dem-button {

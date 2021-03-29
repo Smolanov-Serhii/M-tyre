@@ -82,7 +82,7 @@ function wp_maintenance_mode(){
 </html>');
     }
 }
-add_action('get_header', 'wp_maintenance_mode');
+//add_action('get_header', 'wp_maintenance_mode');
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
@@ -711,18 +711,18 @@ function jk_related_products_args( $args ) {
 
 add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
 function woo_new_product_tab( $tabs ) {
-    $tabs['Доставка'] = array(
+    $tabs['dostavka'] = array(
         'title'     => __( 'Доставка', 'woocommerce' ),
         'priority'     => 21,
         'callback'     => 'woo_new_product_tab_dostavka'
     );
 
-    $tabs['Оплата'] = array(
+    $tabs['pay'] = array(
         'title'     => __( 'Условия оплаты', 'woocommerce' ),
         'priority'     => 22,
         'callback'     => 'woo_new_product_tab_pay'
     );
-    $tabs['Гарантия'] = array(
+    $tabs['varanty'] = array(
         'title'     => __( 'Гарантия', 'woocommerce' ),
         'priority'     => 23,
         'callback'     => 'woo_new_product_tab_varanty'
@@ -1117,4 +1117,34 @@ function  search_by_cat() {
 //Для формы фильтра на главную страницу - конец
 
 add_image_size( 'new-item', 390, 190 );
+
+add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 24;' ), 20 );
+
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+
+function woo_remove_product_tabs( $tabs ) {
+
+    unset( $tabs['description'] ); // Убираем вкладку "Описание"
+    unset( $tabs['reviews'] ); // Убираем вкладку "Отзывы"
+//    unset( $tabs['additional_information'] ); // Убираем вкладку "Свойства"
+
+    return $tabs;
+
+}
+
+
+if ( function_exists( 'add_image_size' ) ) {
+    add_image_size( 'cart-thumb', 68, 98 ); // 100 в ширину и 100 в высоту
+}
+add_filter( 'woocommerce_cart_item_thumbnail', 'change_image_size_in_cart', 10, 2 );
+
+function change_image_size_in_cart( $product_image, $cart_item ) {
+
+    if( is_cart() ) {
+        $product = $cart_item['data'];
+        $product_image = $product->get_image( 'cart-thumb' );
+    }
+    return $product_image;
+}
+
 

@@ -261,38 +261,58 @@ $(document ).ready(function() {
         });
     }
 
-    if ($('.quantity').length){
-        $( '.quantity' ).each(function( index ) {
-            let col = $(this).find('input');
-            let plus = $(this).find('.quantity-arrow-plus');
-            let minus = $(this).find('.quantity-arrow-minus');
-            let step = $(this).find('input').attr('step');
-            let min = $(this).find('input').attr('min');
-            var total = 0;
-            plus.click(function() {
-                total = (col.val() * 1) + (step * 1);
-                col.val(total);
-                $('button.button').removeAttr("disabled");
-                var check = col.val();
-                if (total > min){
-                    minus.removeClass('disable');
-                }
-            });
-            minus.click(function() {
-                var check = col.val();
-                total = (col.val() * 1) - (step * 1);
-                col.val(total);
-                $('button.button').removeAttr("disabled");
-                if (total <= min){
-                    minus.addClass('disable');
-                } else {
-                    minus.removeClass('disable');
-                }
-
-            });
+    if ($('.custom-sale').length){
+        var CustomSale = new Swiper('.custom-sale', {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            lazy: true,
+            navigation: {
+                nextEl: '.custom-sale__next',
+                prevEl: '.custom-sale__prev'
+            }
         });
     }
+    function QuantityNum(){
+    if ($('.quantity').length){
 
+            $( '.quantity' ).each(function( index ) {
+                var col = $(this).find('input');
+                var plus = $(this).find('.quantity-arrow-plus');
+                var minus = $(this).find('.quantity-arrow-minus');
+                var total = col.val();
+                plus.click(function() {
+                    total++;
+                    col.val(total);
+                    $('button.button').removeAttr("disabled");
+                    if (total > 0){
+                        minus.removeClass('disable');
+                    }
+                    col.attr('value', total);
+                    $( '[name="update_cart"]' ).trigger( 'click' );
+                });
+                minus.click(function() {
+                    total--;
+                    col.val(total);
+                    $('button.button').removeAttr("disabled");
+                    if (total <= 0){
+                        minus.addClass('disable');
+                    } else {
+                        minus.removeClass('disable');
+                    }
+                    col.attr('value', total);
+                    $( '[name="update_cart"]' ).trigger( 'click' );
+                });
+            });
+        }
+
+    }
+    QuantityNum();
+    $("body").bind("DOMSubtreeModified", function() {
+        QuantityNum();
+    });
     if ($('#map').length){
         if (  jQuery(window).width() >= 1024 ) {
 

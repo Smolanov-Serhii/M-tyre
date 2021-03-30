@@ -2849,6 +2849,12 @@ body.single-post{
     }
   }
 }
+.yith_wcwl_wishlist_footer{
+  margin-bottom: 100px;
+  .yith_wcwl_wishlist_update{
+    display: none;
+  }
+}
 #custom_shop_table{
   td, th{
     border: none;
@@ -2865,6 +2871,14 @@ body.single-post{
         height: 98px;
         width: auto;
       }
+    }
+  }
+  td.product-add-to-cart{padding-right: 0;
+    a{
+      background-color: transparent;
+      padding-right: 0!important;
+      display: flex!important;
+      justify-content: flex-end;
     }
   }
   td.product-subtotal{

@@ -292,6 +292,7 @@ $(document ).ready(function() {
                     }
                     col.attr('value', total);
                     $( '[name="update_cart"]' ).trigger( 'click' );
+                    $( '[name="update_wishlist"]' ).trigger( 'click' );
                 });
                 minus.click(function() {
                     total--;
@@ -304,6 +305,7 @@ $(document ).ready(function() {
                     }
                     col.attr('value', total);
                     $( '[name="update_cart"]' ).trigger( 'click' );
+                    $( '[name="update_wishlist"]' ).trigger( 'click' );
                 });
             });
         }

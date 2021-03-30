@@ -31,9 +31,13 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
     <div class="checkout__left-column">
+        <div class="checkout__title">
+            <?php the_field('nadpis_kontaktnaya_informacziya','options');?>
+        </div>
         <div class="checkout__person">
 
         </div>
+        <span class="checkout__subj"><?php the_field('nadpis_polya_yavlyayutsya_obyazatelnymi_dlya_zapolneniya','options');?></span>
         <div class="checkout__dostavka-select">
             <div class="checkout__title">
                 <?php the_field('nadpis_sposob_polucheniya','options');?>
@@ -110,14 +114,25 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                                 if ($coef){
                                     $coef = $coef . 'T';
                                 }
+                                if ( empty( $product_id ) ) {
+                                    global $product;
+                                    $product_id = $product->id;
+                                }
 
+                                $wc_cart = WC()->cart;
+
+                                $product_cart_id = $wc_cart->generate_cart_id( $product_id );
+                                $in_cart = $wc_cart->find_product_in_cart( $product_cart_id );
+                                $cart = $wc_cart->get_cart();
                                 echo '<div class="options-item">' . $width . $prof . $radius . ' ' . $coef . '</div>';
                                 $sku = $cart_item['data']->get_sku();
                                 // Вывести артикул на странице корзины магазина
                                 $arttitle = get_field('nadpis_kod','options');
-                                if ($sku){
-                                    echo '<span class="product-article">' . $arttitle . ' ' . $sku . '</span>';
-                                }
+                                $sht = get_field('nadpis_sht','options');
+                                echo '<span class="product-article">' . $cart[ $in_cart ][ 'quantity' ] . ' ' . $sht . '</span>';
+//                                if ($sku){
+//                                    echo '<span class="product-article">' . $arttitle . ' ' . $sku . '</span>';
+//                                }
 
                                 ?>
                             </td>
@@ -173,6 +188,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
         </div>
     </div>
     <div class="checkout__right-column">
+        <div class="checkout__title">
+            <?php the_field('nadpis_vash_zakaz','options');?>
+        </div>
         <?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
         <div id="order_review" class="woocommerce-checkout-review-order">

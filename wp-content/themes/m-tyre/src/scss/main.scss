@@ -3050,6 +3050,40 @@ body.single-post{
   &__left-column{
     width: 62%;
   }
+  &__subj{
+    font-size: 12px;
+    line-height: 122%;
+    color: #A6A9AA;
+    margin-top: 8px;
+    display: block;
+  }
+  &__person{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: -27px;
+    p.form-row{
+      float: none;
+      clear: both;
+      width: calc(50% - 27px);
+      margin-right: 27px;
+      margin-bottom: 20px;
+      padding: 0;
+      label{
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 122%;
+        color: #001317;
+        margin-bottom: 10px;
+      }
+      input{
+        padding: 14px 23px;
+        font-size: 18px;
+        line-height: 122%;
+        color: #001317;
+      }
+    }
+  }
   &__right-column{
     width: calc(38% - 95px);
     margin-left: 95px;

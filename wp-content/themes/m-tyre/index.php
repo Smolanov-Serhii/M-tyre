@@ -131,7 +131,7 @@ global $product;
                         </div>
                         <div class="main-filter__tab-item po-avto">
                             <input style="display: none;" type="search"
-                                   id="woocommerce-product-search-field-<?php echo isset($index) ? absint($index) : 0; ?>"
+                                   id="woocommerce-product-search-field-<?php echo isset($index) ? absint($index) : 1; ?>"
                                    class="search-field"
                                    placeholder="<?php echo esc_attr__('Search products&hellip;', 'woocommerce'); ?>" value=""
                                    name="s"/>

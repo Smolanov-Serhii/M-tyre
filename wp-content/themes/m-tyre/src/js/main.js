@@ -1,5 +1,20 @@
 $(document ).ready(function() {
 
+    if ($('.woocommerce-checkout').length){
+        $('#billing_last_name_field').appendTo('.checkout__person');
+        $('#billing_first_name_field').appendTo('.checkout__person');
+        $('#billing_email_field').appendTo('.checkout__person');
+        $('#billing_phone_field').appendTo('.checkout__person');
+        $('#shipping_method').appendTo('.checkout__dostavka-select');
+        $('#billing_city_field').appendTo('.checkout__dostavka-select');
+        $('#billing_address_1_field').appendTo('.checkout__dostavka-select');
+        $('#house_field').appendTo('.checkout__dostavka-select');
+        $('#flat_field').appendTo('.checkout__dostavka-select');
+        $('#payment').appendTo('.checkout__pay-select');
+        $('#order_review').appendTo('.checkout__right-column');
+
+    }
+
     if ($('select').length){
         $(function() {
             $('select').selectric();

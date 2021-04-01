@@ -484,52 +484,7 @@
       display: flex;
       justify-content: space-between;
       padding: 33px 35px 3px 35px;
-      label{
-        display: flex;
-        width: calc(50% - 17px);
-        &.first-select{
-          justify-content: flex-end;
-        }
-        span{
-          font-size: 14px;
-          line-height: 100%;
-          color: #FFFFFF;
-          position: relative;
-          display: flex;
-          align-items: center;
-          &:before{
-            content: "";
-            display: block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #A6A9AA;
-            border-radius: 50%;
-            margin-right: 12px;
-          }
-          &:after{
-            content: "";
-            position: absolute;
-            display: none;
-            top: 6px;
-            left: 6px;
-            width: 9px;
-            height: 9px;
-            background-color: #FF3A24;
-            border-radius: 50%;
-          }
-        }
-      }
-      input{
-        display: none;
-        &:checked + span{
-          &:before{
-            border: 2px solid white;
-          }
-          &:after{
-            display: block;
-          }
-        }
-      }
+      @include elseradio;
     }
     &__tab{
       &-content{
@@ -3057,11 +3012,22 @@ body.single-post{
     margin-top: 8px;
     display: block;
   }
-  &__person{
+  &__person, &__dostavka-select{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-right: -27px;
+    #shipping_method{
+      width: 100%;
+      label{
+        color: #000000!important;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 122%;
+        margin-bottom: 20px;
+        display: inline-block!important;
+      }
+    }
     p.form-row{
       float: none;
       clear: both;
@@ -3084,9 +3050,50 @@ body.single-post{
       }
     }
   }
+  &__pay-select{
+   .checkout__title{
+     margin-top: 30px;
+   }
+   #payment{
+     background-color: transparent;
+     .payment_box{
+       display: none!important;
+     }
+     img{
+       display: none!important;
+     }
+     label{
+       font-weight: 500;
+       font-size: 18px;
+       line-height: 122%;
+       color: #000000;
+       margin-bottom: 20px;
+       display: inline-block;
+     }
+   }
+  }
   &__right-column{
     width: calc(38% - 95px);
     margin-left: 95px;
+    #order_review{
+      background-color: #F5F5F5;
+      padding: 35px 29px;
+      tbody{
+        display: none;
+      }
+      td{
+        border: none;
+      }
+      th{
+        border: none;
+      }
+      thead{
+        display: none;
+      }
+      .woocommerce-shipping-totals{
+        display: none;
+      }
+    }
   }
   &__title{
     font-weight: 600;

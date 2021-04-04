@@ -1154,3 +1154,30 @@ function disable_shipping_calc_on_cart( $show_shipping ) {
     return $show_shipping;
 }
 add_filter( 'woocommerce_cart_ready_to_calc_shipping', 'disable_shipping_calc_on_cart', 99 );
+
+// Отключаем ненужные поля ввода при заказе
+add_filter('woocommerce_checkout_fields','remove_checkout_fields');
+function remove_checkout_fields($fields){
+    //unset($fields['billing']['billing_first_name']);
+    //unset($fields['billing']['billing_last_name']);
+    unset($fields['billing']['billing_company']); // Отключено
+    //unset($fields['billing']['billing_address_1']);
+    unset($fields['billing']['billing_address_2']); // Отключено
+//    unset($fields['billing']['billing_city']); // Отключено
+    unset($fields['billing']['billing_postcode']); // Отключено
+    unset($fields['billing']['billing_country']); // Отключено
+    unset($fields['billing']['billing_state']); // Отключено
+    //unset($fields['billing']['billing_phone']);
+    //unset($fields['order']['order_comments']);
+    //unset($fields['billing']['billing_email']);
+    unset($fields['account']['account_username']); // Отключено
+    unset($fields['account']['account_password']); // Отключено
+    unset($fields['account']['account_password-2']); // Отключено
+    return $fields;
+}
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+function custom_override_checkout_fields( $fields ) {
+    unset($fields['billing']['billing_country']); // Отключаем страны оплаты
+    unset($fields['shipping']['shipping_country']);// Отключаем страны доставки
+    return $fields;
+}

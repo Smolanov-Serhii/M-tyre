@@ -3002,6 +3002,9 @@ body.single-post{
 .checkout{
   display: flex;
   flex-wrap: wrap;
+  .optional{
+    display: none;
+  }
   #customer_details{
     .woocommerce-additional-fields{
       #order_comments_field label{

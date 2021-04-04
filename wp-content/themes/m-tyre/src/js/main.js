@@ -12,6 +12,8 @@ $(document ).ready(function() {
         $('#flat_field').appendTo('.checkout__dostavka-select');
         $('#payment').appendTo('.checkout__pay-select');
         $('#order_review').appendTo('.checkout__right-column');
+        $('.col2-set').appendTo('.checkout__pay-select');
+        $('#place_order').appendTo('.checkout__footer-btn');
 
     }
 

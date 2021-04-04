@@ -163,8 +163,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
                                     <table cellspacing="0" class="shop_table shop_table_responsive">
 
                                         <tr class="order-total">
-                                            <th><?php the_field( 'nadpis_itogo_k_oplate', 'options' ); ?></th>
-                                            <td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
+                                            <th><?php the_field('nadpis_obshhaya_summa','options');?></th>
+                                            <td><?php wc_cart_totals_subtotal_html(); ?></td>
                                         </tr>
 
                                         <?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
@@ -219,7 +219,16 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	<?php endif; ?>
 
 	<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+    <div class="checkout__footer">
+        <div class="checkout__footer-desc">
+            <span>
+                <?php the_field('nadpis_posle_otpravki_zayavki_tovar_rezerviruetsya_avtomaticheski_posle_podtverzhdeniya_rezerva_v_kratchajshie_sroki_s_vami_svyazhetsya_menedzher','options');?>
+            </span>
+        </div>
+        <div class="checkout__footer-btn">
 
+        </div>
+    </div>
 </form>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>

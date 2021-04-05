@@ -32,18 +32,29 @@
                         endif;
                         ?>
                     </div>
-                    <div class="footer__socials">
-                        <div class="footer__socials-title">
-                            <?php echo the_field('nadpis_my_v_soczsetyah','options')?>
-                        </div>
-                        <div class="footer__socials-list">
-                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_telegram','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/telegram-icon.svg" alt="Telegram"></a></div>
-                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_twitter','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/twitter-icon.svg" alt="twittern"></a></div>
-                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_ok','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/ok-icon.svg" alt="Однокласники"></a></div>
-                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_fb','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/fb-icon.svg" alt="FaceBook"></a></div>
-                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_instagram','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/insta-icon.svg" alt="Instagram"></a></div>
-                        </div>
-                    </div>
+                    <?php
+                        if( wp_is_mobile() ){
+
+                        } else {
+                            ?>
+
+                            <div class="footer__socials">
+                                <div class="footer__socials-title">
+                                    <?php echo the_field('nadpis_my_v_soczsetyah','options')?>
+                                </div>
+                                <div class="footer__socials-list">
+                                    <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_telegram','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/telegram-icon.svg" alt="Telegram"></a></div>
+                                    <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_twitter','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/twitter-icon.svg" alt="twittern"></a></div>
+                                    <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_ok','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/ok-icon.svg" alt="Однокласники"></a></div>
+                                    <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_fb','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/fb-icon.svg" alt="FaceBook"></a></div>
+                                    <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_instagram','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/insta-icon.svg" alt="Instagram"></a></div>
+                                </div>
+                            </div>
+
+                            <?php
+                        }
+                    ?>
+
                 </div>
                 <div class="footer__nav">
                     <nav class="footer__pages-nav">
@@ -67,6 +78,26 @@
                         </ul>
                     </nav>
                 </div>
+                <?php
+                if( wp_is_mobile() ){
+                    ?>
+
+                    <div class="footer__socials">
+                        <div class="footer__socials-title">
+                            <?php echo the_field('nadpis_my_v_soczsetyah','options')?>
+                        </div>
+                        <div class="footer__socials-list">
+                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_telegram','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/telegram-icon.svg" alt="Telegram"></a></div>
+                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_twitter','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/twitter-icon.svg" alt="twittern"></a></div>
+                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_ok','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/ok-icon.svg" alt="Однокласники"></a></div>
+                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_fb','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/fb-icon.svg" alt="FaceBook"></a></div>
+                            <div class="footer__socials-item"><a href="<?php echo the_field('ssylka_na_instagram','options')?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/insta-icon.svg" alt="Instagram"></a></div>
+                        </div>
+                    </div>
+
+                    <?php
+                }
+                ?>
             </div>
             <div class="footer__bottom">
                 <div class="footer__copyright">

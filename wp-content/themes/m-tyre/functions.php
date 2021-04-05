@@ -978,7 +978,7 @@ if ( defined( 'YITH_WCWL' ) && ! function_exists( 'yith_wcwl_get_items_count' ) 
         ob_start();
         ?>
         <span class="yith-wcwl-items-count">
-      <i class="yith-wcwl-icon fa fa-star-o">
+      <i class="yith-wcwl-icon">
     <?php echo esc_html( yith_wcwl_count_all_products() ); ?>
       </i>
   </span>

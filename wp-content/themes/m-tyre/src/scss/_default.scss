@@ -31,9 +31,6 @@ p, pre{
   font-size: 18px;
   line-height: 1.5em;
   margin-bottom: 0.9em;
-  @media all and (max-width: 1200px) {
-    font-size: 17px;
-  }
   @media all and (max-width: 1024px) {
     font-size: 16px;
   }
@@ -43,9 +40,9 @@ p, pre{
   @media all and (max-width: 500px) {
     font-size: 14px;
   }
-  @media all and (max-width: 400px) {
-    font-size: 12px;
-  }
+  //@media all and (max-width: 400px) {
+  //  font-size: 12px;
+  //}
 }
 h1{
   font-family: 'Montserrat', sans-serif;
@@ -69,6 +66,22 @@ ul,ol{
   margin: 0;
   li{
     margin-bottom: 0.6em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 121%;
+    @media all and (max-width: 1024px) {
+      font-size: 16px;
+    }
+    @media all and (max-width: 768px) {
+      font-size: 15px;
+    }
+    @media all and (max-width: 500px) {
+      font-size: 14px;
+    }
+    //@media all and (max-width: 400px) {
+    //  font-size: 12px;
+    //}
   }
 }
 strong, b{
@@ -238,27 +251,7 @@ a{
   max-width: 1400px;
   padding: 0 100px;
   text-align: center;
-  @media all and (max-width: 1000px) {
-    padding: 0 50px;
-    font-size: 36px;
-    margin: 40px auto;
-  }
-  @media all and (max-width: 900px) {
-    font-size: 32px;
-    padding: 0;
-    margin: 30px auto;
-  }
-  @media all and (max-width: 660px) {
-    font-size: 24px;
-    margin: 20px auto;
-  }
-  @media all and (max-width: 500px) {
-    font-size: 18px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    max-width: 80%;
-  }
+
 }
 
 *{
@@ -268,9 +261,6 @@ a{
 body{
   margin: 0;
   padding: 0;
-  @media all and (max-width: 900px) {
-    padding-top: 60px;
-  }
 }
 .not-event{
   & > a{
@@ -348,7 +338,7 @@ input[type="number"] {
 .section-title{
   display: flex;
   align-items: center;
-  padding: 11px 0 11px 26px;
+  padding: 17px 0 11px 26px;
   margin: 0 0 28px 0;
   font-weight: 800;
   font-size: 36px;
@@ -356,10 +346,25 @@ input[type="number"] {
   text-transform: unset;
   position: relative;
   z-index: 2;
-  justify-content: space-between;
+  justify-content: flex-start;
+  text-align: left;
+  @media all and (max-width: 1000px) {
+    font-size: 36px;
+  }
+  @media all and (max-width: 900px) {
+    font-size: 32px;
+  }
+  @media all and (max-width: 660px) {
+    font-size: 24px;
+    text-align: left;
+    padding-left: 22px;
+  }
+  @media all and (max-width: 500px) {
+    font-size: 30px;
+  }
   &:before{
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     content: "";
     height: 0;
@@ -370,6 +375,14 @@ input[type="number"] {
     border-style: solid;
     z-index: -1;
     border-left: none;
+    @media all and (max-width: 660px) {
+      border-bottom: 57px;
+      border-right: 22px;
+      border-color: transparent transparent #FF3A24 #FF3A24;
+      border-style: solid;
+      border-left: none;
+      width: 40px;
+    }
   }
 }
 .block-container-full{
@@ -377,18 +390,43 @@ input[type="number"] {
   margin: auto;
   padding-left: calc((100% - 1220px) / 2);
   padding-right: 0;
+  @media all and (max-width: 1420px) {
+    padding-left: 50px;
+  }
+  @media all and (max-width: 768px) {
+    padding-left: 20px;
+  }
   .padding-part{
     padding-right: calc((100vw - 1220px) / 2);
+    @media all and (max-width: 1420px) {
+      padding-right: 50px;
+    }
+    @media all and (max-width: 768px) {
+      padding-right: 20px;
+    }
   }
 
 }
 .padding-part{
   padding-right: calc((100vw - 1220px) / 2);
+  @media all and (max-width: 1420px) {
+    padding-right: 50px;
+  }
+  @media all and (max-width: 768px) {
+    padding-right: 20px;
+  }
 }
 .block-container{
   max-width: 1420px;
   margin: auto;
   padding: 0 100px;
+  overflow: hidden;
+  @media all and (max-width: 1420px) {
+    padding: 0 50px;
+  }
+  @media all and (max-width: 768px) {
+    padding: 0 20px;
+  }
 }
 .block-button{
 

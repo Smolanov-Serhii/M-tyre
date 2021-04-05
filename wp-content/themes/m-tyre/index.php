@@ -67,10 +67,34 @@ global $product;
             <div class="main-filter__container">
                 <div class="main-filter__tabs">
                     <div class="main-filter__tabs-header active" data-id="shini">
-                        Шины
+                        <div class="contaner">
+                            <span class="main-filter__tabs-pc">
+                            <?php the_field('nadpis_shiny','options')?>
+                        </span>
+                            <span class="main-filter__tabs-mob">
+                            <?php the_field('nadpis_podobrat_shiny','options')?>
+                        </span>
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect class="vert" x="10.5" width="2" height="23" fill="#FF3A24"/>
+                                <rect class="hor" y="12.5" width="2" height="23" transform="rotate(-90 0 12.5)" fill="#FF3A24"/>
+                            </svg>
+                        </div>
+                        <div class="main-filter__tab-mob"></div>
                     </div>
                     <div class="main-filter__tabs-header" data-id="diski">
-                        Диски
+                        <div class="contaner">
+                            <span class="main-filter__tabs-pc">
+                            <?php the_field('nadpis_diski','options')?>
+                        </span>
+                            <span class="main-filter__tabs-mob">
+                            <?php the_field('nadpis_podobrat_diski','options')?>
+                        </span>
+                            <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect class="vert" x="10.5" width="2" height="23" fill="#FF3A24"/>
+                                <rect class="hor" y="12.5" width="2" height="23" transform="rotate(-90 0 12.5)" fill="#FF3A24"/>
+                            </svg>
+                        </div>
+                        <div class="main-filter__tab-mob"></div>
                     </div>
                 </div>
                 <div class="main-filter__radio">
@@ -202,6 +226,12 @@ global $product;
         </div>
     </section>
     <section class="promotions block-container">
+        <a href="<?php the_field('ssylka_na_knopku_vse_akczii', 78);?>" class="promotions__lnk-mob">
+            <span><?php the_field('nadpis_vse_akczii', 'options');?></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6 12C6 11.8011 6.07902 11.6103 6.21967 11.4696C6.36032 11.329 6.55109 11.25 6.75 11.25L15.4395 11.25L12.219 8.03097C12.0782 7.89014 11.9991 7.69914 11.9991 7.49997C11.9991 7.30081 12.0782 7.1098 12.219 6.96897C12.3598 6.82814 12.5508 6.74902 12.75 6.74902C12.9492 6.74902 13.1402 6.82814 13.281 6.96897L17.781 11.469C17.8508 11.5386 17.9063 11.6214 17.9441 11.7125C17.9819 11.8036 18.0013 11.9013 18.0013 12C18.0013 12.0986 17.9819 12.1963 17.9441 12.2874C17.9063 12.3785 17.8508 12.4613 17.781 12.531L13.281 17.031C13.1402 17.1718 12.9492 17.2509 12.75 17.2509C12.5508 17.2509 12.3598 17.1718 12.219 17.031C12.0782 16.8901 11.9991 16.6991 11.9991 16.5C11.9991 16.3008 12.0782 16.1098 12.219 15.969L15.4395 12.75L6.75 12.75C6.55109 12.75 6.36032 12.671 6.21967 12.5303C6.07902 12.3896 6 12.1989 6 12Z" fill="#FF3A24"/>
+            </svg>
+        </a>
         <h2 class="promotions__title section-title">
             <?php the_field('zagolovok_bloka_akczii', 78);?>
             <a href="<?php the_field('ssylka_na_knopku_vse_akczii', 78);?>" class="promotions__lnk">
@@ -236,7 +266,7 @@ global $product;
                                      <div class="promotions__item-title" style="color: <?php echo $titlecolor?>;">
                                          <?php echo $title?>
                                      </div>
-                                     <div class="promotions__item-title" style="color: <?php echo $subtitlecolor?>;">
+                                     <div class="promotions__item-subtitle" style="color: <?php echo $subtitlecolor?>;">
                                          <?php echo $subtitle?>
                                      </div>
                                  </div>

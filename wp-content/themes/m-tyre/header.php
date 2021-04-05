@@ -14,7 +14,10 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name='viewport' content='width=device-width,initial-scale=1'/>
+    <meta content='true' name='HandheldFriendly'/>
+    <meta content='width' name='MobileOptimized'/>
+    <meta content='yes' name='apple-mobile-web-app-capable'/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;600;700;900&display=swap" rel="stylesheet">
 	<?php wp_head(); ?>
@@ -73,6 +76,11 @@
                         ?>
                     </nav>
                 </div>
+            </div>
+            <div class="header__burger burger__button">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             <div class="header__movemenu">
                 <div class="header__market padding-part">

@@ -75,22 +75,26 @@ $(document ).ready(function() {
             breakpoints: {
                 1400: {
                     slidesPerView: 5,
-                    spaceBetween: 30,
-                    centeredSlides: false,
+                    spaceBetween: 7,
+                    centeredSlides: false
                 },
-                600: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                    centeredSlides: false,
+                968: {
+                    slidesPerView: 4,
+                    centeredSlides: false
+                },
+                680: {
+                    slidesPerView: 3,
+                    centeredSlides: false
                 },
                 500: {
-                    slidesPerView: 1,
-                    spaceBetween: 60,
+                    slidesPerView: 2
                 },
                 300: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
+                    slidesPerView: 2
                 },
+                240: {
+                    slidesPerView: 1
+                }
 
             }
         });
@@ -98,7 +102,7 @@ $(document ).ready(function() {
 
     if ($('.promotions').length){
         var PromotionsSlider = new Swiper('.promotions .swiper-container', {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 22,
             loop: true,
             observer: true,
@@ -109,24 +113,18 @@ $(document ).ready(function() {
             },
             breakpoints: {
                 1400: {
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                     spaceBetween: 22,
                     centeredSlides: false
                 },
-                600: {
+                960: {
                     slidesPerView: 2,
                     spaceBetween: 20,
                     centeredSlides: false
                 },
-                500: {
-                    slidesPerView: 1,
-                    spaceBetween: 60
-                },
-                300: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
+                240: {
+                    slidesPerView: 1
                 }
-
             }
         });
     }
@@ -157,14 +155,21 @@ $(document ).ready(function() {
                     spaceBetween: 7,
                     centeredSlides: false
                 },
-                600: {
+                968: {
                     slidesPerView: 4,
                     centeredSlides: false
                 },
+                680: {
+                    slidesPerView: 3,
+                    centeredSlides: false
+                },
                 500: {
-                    slidesPerView: 1
+                    slidesPerView: 2
                 },
                 300: {
+                    slidesPerView: 1
+                },
+                240: {
                     slidesPerView: 1
                 }
 
@@ -197,9 +202,12 @@ $(document ).ready(function() {
                     centeredSlides: false
                 },
                 500: {
-                    slidesPerView: 1
+                    slidesPerView: 2
                 },
                 300: {
+                    slidesPerView: 1
+                },
+                240: {
                     slidesPerView: 1
                 }
 
@@ -230,14 +238,24 @@ $(document ).ready(function() {
                     spaceBetween: 7,
                     centeredSlides: false
                 },
-                600: {
+                968: {
                     slidesPerView: 4,
                     centeredSlides: false
                 },
+                680: {
+                    slidesPerView: 3,
+                    centeredSlides: false
+                },
                 500: {
+                    slidesPerView: 2
+                },
+                450: {
                     slidesPerView: 1
                 },
                 300: {
+                    slidesPerView: 1
+                },
+                240: {
                     slidesPerView: 1
                 }
 
@@ -268,9 +286,12 @@ $(document ).ready(function() {
                     centeredSlides: false
                 },
                 500: {
-                    slidesPerView: 1
+                    slidesPerView: 2
                 },
                 300: {
+                    slidesPerView: 1
+                },
+                240: {
                     slidesPerView: 1
                 }
 

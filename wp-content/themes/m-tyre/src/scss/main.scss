@@ -3857,3 +3857,7 @@ body.single-post{
   }
 
 }
+.woocommerce nav.woocommerce-pagination{
+  position: relative;
+  z-index: 2;
+}

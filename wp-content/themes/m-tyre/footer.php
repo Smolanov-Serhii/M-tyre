@@ -27,7 +27,7 @@
                         <?php
                         else :
                             ?>
-                            <a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php the_custom_logo(); ?></a>
+                            <a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/logo-footer.svg" alt="Logo footer"></a>
                         <?php
                         endif;
                         ?>

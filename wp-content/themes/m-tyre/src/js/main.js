@@ -17,6 +17,26 @@ $(document ).ready(function() {
 
     }
 
+    if ($('.footer').length){
+
+            $('.footer .pointer-event').click(function() {
+                if( $(window).width() <= 768) {
+                $(this).find('.sub-menu').fadeToggle(300);
+                $(this).toggleClass('footer-showed');
+                } else {
+                    $('.footer .pointer-event').removeClass('footer-showed');
+                }
+            });
+            if( $(window).width() <= 768) {
+               $('.footer__socials').appendTo('.footer__bottom');
+            }
+        $(window).on('resize', function() {
+            if( $(window).width() > 768) {
+                $('.footer .pointer-event').removeClass('footer-showed');
+            }
+        });
+    }
+
     if ($('select').length){
         $(function() {
             $('select').selectric();
@@ -128,16 +148,53 @@ $(document ).ready(function() {
             }
         });
     }
+    if ($('.viewed .viewed__container').length){
+        $('.viewed .viewed__container > .columns-4').addClass('swiper-container');
+        var pagelement = $("<div class='swiper-pagination'></div>");
+        $('.viewed .swiper-container').append(pagelement);
+        var viewedskiderelems = new Swiper('.viewed .swiper-container', {
+            slidesPerView: 5,
+            spaceBetween: 7,
+            loop: true,
+            observer: true,
+            observeParents: true,
+            lazy: true,
+            pagination: {
+                el: '.viewed .swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                1400: {
+                    slidesPerView: 5,
+                    spaceBetween: 7,
+                    centeredSlides: false
+                },
+                600: {
+                    slidesPerView: 4,
+                    centeredSlides: false
+                },
+                500: {
+                    slidesPerView: 2
+                },
+                300: {
+                    slidesPerView: 1
+                },
+                240: {
+                    slidesPerView: 1
+                }
 
+            }
+        });
+    }
     if ($('.single-product').length){
-        var newElems = $('.entry-summary button.single_add_to_cart_button[name="add-to-cart"]');
-        $('.entry-summary .quantity__row').append(newElems);
+        var singlenewElems = $('.entry-summary button.single_add_to_cart_button[name="add-to-cart"]');
+        $('.entry-summary .quantity__row').append(singlenewElems);
     }
 
     if ($('.bestsellers').length){
         $('.bestsellers .woocommerce').addClass('swiper-container');
-        var newElems = $("<div class='swiper-pagination'></div>");
-        $('.bestsellers .swiper-container').append(newElems);
+        var bestsellersElems = $("<div class='swiper-pagination'></div>");
+        $('.bestsellers .swiper-container').append(bestsellersElems);
         var MainProductSlider = new Swiper('.bestsellers .swiper-container', {
             slidesPerView: 5,
             spaceBetween: 7,
@@ -177,10 +234,10 @@ $(document ).ready(function() {
         });
     }
     if ($('.related').length){
-        $('.related .woocommerce').addClass('swiper-container');
-        var newElems = $("<div class='swiper-pagination'></div>");
-        $('.related .swiper-container').append(newElems);
-        var RelatedtSlider = new Swiper('.related .swiper-container', {
+        // $('.related .woocommerce').addClass('swiper-container');
+        var relElems = $("<div class='swiper-pagination'></div>");
+        $('.related .swiper-container').append(relElems);
+        var RelatedSlider = new Swiper('.related .swiper-container', {
             slidesPerView: 5,
             spaceBetween: 7,
             loop: true,

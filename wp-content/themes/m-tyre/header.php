@@ -37,7 +37,7 @@
                     <?php
                     else :
                         ?>
-                        <a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php the_custom_logo(); ?></a>
+                        <div class="site-logo"><?php the_custom_logo(); ?></div>
                     <?php
                     endif;
                 ?>

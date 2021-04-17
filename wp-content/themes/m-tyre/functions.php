@@ -327,8 +327,8 @@ function mytheme_add_woocommerce_support(){
     add_theme_support('woocommerce');
 }
 add_action('after_setup_theme','mytheme_add_woocommerce_support');
-add_theme_support( 'wc-product-gallery-zoom' );
-//add_theme_support( 'wc-product-gallery-lightbox' );
+//add_theme_support( 'wc-product-gallery-zoom' );
+add_theme_support( 'wc-product-gallery-lightbox' );
 //add_theme_support( 'wc-product-gallery-slider');
 
 if( function_exists('acf_add_options_page') ) {
@@ -1181,3 +1181,4 @@ function custom_override_checkout_fields( $fields ) {
     unset($fields['shipping']['shipping_country']);// Отключаем страны доставки
     return $fields;
 }
+

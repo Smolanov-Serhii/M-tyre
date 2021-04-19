@@ -632,16 +632,16 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'bbloomer_new_badge_shop_
 
 function bbloomer_new_badge_shop_page() {
     global $product;
+
     $newness_days = 2;
     $triger = 0;
     $NewAtr = get_field('nadpis_na_new', 'options');
     $HitAtr = get_field('nadpis_na_hit', 'options');
     $created = strtotime( $product->get_date_created() );
-    if ( ( time() - ( 60 * 60 * 24 * $newness_days ) ) < $created ) {
+    if ($product->recent='true') {
         echo '<div class="new-marker">' . $NewAtr . '</div>';
-        $triger = 1;
-    } else if ($product->featured='true' || $triger = 0){
-
+    };
+    if ($product->featured='true'){
         echo '<div class="hit-marker">' . $HitAtr . '</div>';
     };
 }
@@ -737,8 +737,9 @@ function woo_new_product_tab_pay() {
     get_template_part('inc/oplata');
 }
 function woo_new_product_tab_varanty() {
-    echo '<h2>Гарантия</h2>';
-    echo '<p>описание 2</p>';
+    $titlevaranty = get_field('nadpis_garantiya', 357);
+    echo '<h2>' . $titlevaranty . '</h2>';
+    get_template_part('inc/varanty-template');
 }
 
 add_filter( 'woocommerce_product_tabs', 'devise_woo_rename_reviews_tab', 98);

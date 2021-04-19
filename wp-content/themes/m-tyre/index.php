@@ -334,7 +334,8 @@ global $product;
                 </a>
             </h2>
             <div class="new__list">
-                <?php echo do_shortcode('[products limit="10" orderby="id" order="DESC" visibility="visible"]');?>
+
+                <?php echo do_shortcode('[recent_products per_page="10" columns="4"]');?>
             </div>
         </div>
     </section>

@@ -218,6 +218,15 @@ a{
 }
 .woocommerce table.shop_table{
   border: none;
+  @media all and (max-width: 768px) {
+    tbody{
+      width: 100%;
+      display: block;
+      td{
+        background-color: transparent!important;
+      }
+    }
+  }
 }
 
 .button-green, #sendbutton, .dem-button {
@@ -345,7 +354,7 @@ input[type="number"] {
   line-height: 122%;
   text-transform: unset;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   justify-content: flex-start;
   text-align: left;
   @media all and (max-width: 1000px) {

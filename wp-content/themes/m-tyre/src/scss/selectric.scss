@@ -37,6 +37,9 @@ $selectric-font-size:       14px !default;                                      
     color: $selectric-text-color;
     height: $selectric-inner-height;
     user-select: none;
+    @media all and (max-width: 500px) {
+      font-size: 12px;
+    }
   }
 
   .button {
@@ -194,6 +197,9 @@ $selectric-font-size:       14px !default;                                      
     padding: 10px;
     color: #666;
     cursor: pointer;
+    @media all and (max-width: 500px) {
+      font-size: 12px;
+    }
 
     &.selected {
       background: #E0E0E0;

@@ -127,25 +127,28 @@ h6{
   font-weight: 700;
   font-size: 18px;
 }
-a.button{
-  background-color: #112A3D;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 14px;
-  line-height: 17px;
-  text-transform: uppercase;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  transition: color .3s;
-  padding: 14px 30px;
-  &:hover{
-    background-color: #4BC3E8;
+body{
+  a.button, #custom-one-click{
+    background-color: #112A3D;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: uppercase;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: color .3s;
+    padding: 14px 30px;
+    &:hover{
+      background-color: #4BC3E8;
+    }
   }
 }
+
 a{
   color: #0E5A9E;
 }

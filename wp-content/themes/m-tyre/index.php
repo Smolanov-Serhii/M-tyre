@@ -69,7 +69,8 @@ global $product;
                     <div class="main-filter__tabs-header active" data-id="shini">
                         <div class="contaner">
                             <span class="main-filter__tabs-pc">
-                            <?php the_field('nadpis_shiny','options')?>
+<!--                            --><?php //the_field('nadpis_shiny','options')?>
+                                <?php the_field('nadpis_podobrat_shiny','options')?>
                         </span>
                             <span class="main-filter__tabs-mob">
                             <?php the_field('nadpis_podobrat_shiny','options')?>
@@ -246,7 +247,7 @@ global $product;
                 <?php
                 $args = array(
                     'post_type' => 'akcii',
-                    'showposts' => "-1", //сколько показать статей
+                    'showposts' => "5", //сколько показать статей
                     'orderby' => "menu_order", //сортировка по дате
                     'caller_get_posts' => 1);
                 $my_query = new wp_query($args);
@@ -318,7 +319,7 @@ global $product;
                 </a>
             </h2>
             <div class="bestsellers__list">
-                <?php echo do_shortcode('[products limit="10" visibility="featured" ]');?>
+                <?php echo do_shortcode('[products limit="5" visibility="featured" ]');?>
             </div>
         </div>
     </section>
@@ -335,7 +336,7 @@ global $product;
             </h2>
             <div class="new__list">
 
-                <?php echo do_shortcode('[recent_products per_page="10" columns="4"]');?>
+                <?php echo do_shortcode('[recent_products per_page="5" columns="4"]');?>
             </div>
         </div>
     </section>

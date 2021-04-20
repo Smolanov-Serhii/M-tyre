@@ -201,6 +201,7 @@
                                 $currency_symbol = html_entity_decode(get_woocommerce_currency_symbol());
                                 ?>
                                 <span class="fix_cart_total"><?php echo sprintf($woocommerce->cart->cart_contents_total);
+                                echo ' ';
                                     echo $currency_symbol; ?></span>
                             </div >
                             <?php

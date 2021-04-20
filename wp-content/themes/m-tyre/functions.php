@@ -1183,3 +1183,11 @@ function custom_override_checkout_fields( $fields ) {
     return $fields;
 }
 
+add_filter('woocommerce_get_image_size_thumbnail','add_thumbnail_size',1,10);
+function add_thumbnail_size($size){
+
+    $size['width'] = 450;
+    $size['height'] = 651;
+    $size['crop']   = 1; //0 - не обрезаем, 1 - обрезка
+    return $size;
+}
